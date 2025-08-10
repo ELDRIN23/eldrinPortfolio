@@ -14,7 +14,6 @@ export default function Navbar() {
 
   const closeDropdown = () => setIsOpen(false);
 
-  // Close when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -37,7 +36,20 @@ export default function Navbar() {
   }, [isOpen]);
 
   const goldLinkClasses =
-    "text-yellow-400 font-semibold hover:text-yellow-300 transition-colors duration-300";
+    "block px-4 py-3 text-yellow-400 font-semibold rounded-lg relative overflow-hidden " +
+    "transition-all duration-300 ease-in-out " +
+    "hover:text-black hover:scale-105 " +
+    "hover:shadow-[0_0_15px_4px_rgba(255,215,0,0.85)] " +
+    "before:absolute before:inset-0 before:bg-gradient-to-r before:from-yellow-300/30 before:via-yellow-400/40 before:to-yellow-300/30 " +
+    "before:opacity-0 before:blur-md before:transform before:-translate-x-full before:transition-transform before:duration-500 hover:before:translate-x-0 hover:before:opacity-100";
+
+  const premiumButton =
+    "btn relative bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 text-primary-content " +
+    "font-bold border-none rounded-lg px-5 py-3 overflow-hidden transition-transform duration-300 ease-in-out " +
+    "shadow-[0_0_15px_3px_rgba(255,215,0,0.6)] hover:scale-110 hover:brightness-110 hover:shadow-[0_0_25px_6px_rgba(255,215,0,0.9)] " +
+    "before:absolute before:top-0 before:left-0 before:w-full before:h-full " +
+    "before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent " +
+    "before:opacity-0 before:blur-sm before:transform before:-translate-x-full before:transition-all before:duration-700 hover:before:translate-x-full hover:before:opacity-100";
 
   return (
     <div className="navbar bg-primary text-primary-content px-6 relative">
@@ -55,24 +67,13 @@ export default function Navbar() {
         <li><Link to="/projects" className={goldLinkClasses}>Projects</Link></li>
         <li><Link to="/contact" className={goldLinkClasses}>Contact</Link></li>
         <li>
-          <Link
-            to="/know-more"
-            className="btn relative bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600
-              text-primary-content font-bold border-none
-              shadow-[0_0_15px_3px_rgba(255,215,0,0.6)]
-              overflow-hidden transition-transform duration-300
-              hover:scale-110 hover:brightness-110
-              before:absolute before:top-0 before:left-0 before:w-full before:h-full
-              before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent
-              before:opacity-0 before:blur-sm before:transform before:-translate-x-full
-              before:transition-all before:duration-700 hover:before:translate-x-full hover:before:opacity-100"
-          >
+          <Link to="/know-more" className={premiumButton}>
             Know More About Me
           </Link>
         </li>
       </ul>
 
-      {/* 3-dot icon (mobile/tablet only) */}
+      {/* 3-dot icon (mobile only, fixed) */}
       <div className="fixed top-4 right-4 flex items-center gap-3 z-[10000] lg:hidden">
         {showHint && !isOpen && (
           <div className="flex items-center gap-1 animate-bounce">
@@ -116,9 +117,9 @@ export default function Navbar() {
       {isOpen && (
         <ul
           ref={menuRef}
-          className="fixed top-20 right-4 p-4 shadow-2xl bg-primary rounded-box w-56
-            border border-purple-600 backdrop-blur-md bg-opacity-70
-            transition-all duration-300 ease-in-out z-[9998]"
+          className="fixed top-20 right-4 flex flex-col gap-3 p-4 shadow-2xl bg-primary rounded-xl w-56
+            border border-purple-600 backdrop-blur-md bg-opacity-80
+            transition-all duration-500 ease-in-out animate-slideDown z-[9998]"
         >
           <li><Link to="/" onClick={closeDropdown} className={goldLinkClasses}>Home</Link></li>
           <li><Link to="/about" onClick={closeDropdown} className={goldLinkClasses}>About</Link></li>
@@ -128,15 +129,7 @@ export default function Navbar() {
             <Link
               to="/know-more"
               onClick={closeDropdown}
-              className="btn btn-sm relative bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600
-                text-primary-content font-bold border-none
-                shadow-[0_0_15px_3px_rgba(255,215,0,0.6)]
-                overflow-hidden transition-transform duration-300
-                hover:scale-110 hover:brightness-110
-                before:absolute before:top-0 before:left-0 before:w-full before:h-full
-                before:bg-gradient-to-r before:from-transparent before:via-white/40 before:to-transparent
-                before:opacity-0 before:blur-sm before:transform before:-translate-x-full
-                before:transition-all before:duration-700 hover:before:translate-x-full hover:before:opacity-100"
+              className={premiumButton}
             >
               Know More About Me
             </Link>
@@ -150,6 +143,14 @@ export default function Navbar() {
           20%, 22%, 24%, 55% { opacity: 1; }
         }
         .animate-flicker { animation: flicker 3s infinite; }
+
+        @keyframes slideDown {
+          from { transform: translateY(-20px); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slideDown {
+          animation: slideDown 0.4s ease forwards;
+        }
       `}</style>
     </div>
   );
