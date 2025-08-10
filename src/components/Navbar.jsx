@@ -5,19 +5,12 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showHint, setShowHint] = useState(true);
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
-  const closeDropdown = () => setIsOpen(false);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) setShowHint(false); // Hide hint only when menu is opened
+  };
 
-  // Hide hint on any screen touch/click
-  useEffect(() => {
-    const hideHint = () => setShowHint(false);
-    window.addEventListener("touchstart", hideHint);
-    window.addEventListener("click", hideHint);
-    return () => {
-      window.removeEventListener("touchstart", hideHint);
-      window.removeEventListener("click", hideHint);
-    };
-  }, []);
+  const closeDropdown = () => setIsOpen(false);
 
   const goldLinkClasses =
     "text-yellow-400 font-semibold hover:text-yellow-300 transition-colors duration-300";
@@ -82,7 +75,7 @@ export default function Navbar() {
             </svg>
           </button>
 
-          {/* Hint arrow for mobile (inline, luxurious glow) */}
+          {/* Hint arrow for mobile */}
           {showHint && !isOpen && (
             <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 flex flex-row items-center gap-2 animate-bounce lg:hidden">
               <span className="text-yellow-300 text-sm font-semibold drop-shadow-[0_0_5px_rgba(255,215,0,0.9)] whitespace-nowrap">
