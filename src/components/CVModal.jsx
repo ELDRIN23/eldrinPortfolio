@@ -11,7 +11,7 @@ export default function CVModal() {
     const openTimer = setTimeout(() => {
       setIsOpen(true);
       setSecondsLeft(5);
-    }, 10000);
+    }, 20000);
 
     return () => {
       clearTimeout(openTimer);
