@@ -59,7 +59,7 @@ export default function Projects() {
           whileHover={{ scale: 1.05, boxShadow: "0 0 20px #8b5cf6" }}
         >
           <img
-            src=""
+            src="/eldrinTodo.png"
             alt="Todo App"
             className="w-full h-48 object-cover"
           />
@@ -68,7 +68,7 @@ export default function Projects() {
               Todo App
             </h2>
             <p className="text-gray-300 leading-relaxed mb-6">
-              Task management tool built with React, Vite, and MongoDB supporting full CRUD operations with powerful features.
+              Task management tool built with React, Vite, and MongoDB supporting full CRUD operations with powerfull features.
             </p>
 
             <button
@@ -102,7 +102,7 @@ export default function Projects() {
           whileHover={{ scale: 1.05, boxShadow: "0 0 20px #8b5cf6" }}
         >
           <img
-            src="https://via.placeholder.com/400x200"
+            src="/novathon2.png"
             alt="Hackathon Projects"
             className="w-full h-48 object-cover"
           />
@@ -112,6 +112,7 @@ export default function Projects() {
             </h2>
             <p className="text-gray-300 leading-relaxed">
               Collaborative projects created during hackathons focusing on innovation and problem-solving.
+              using LLMWare, ollama & pinecone and frontend react with multer
             </p>
           </div>
         </motion.div>
@@ -135,7 +136,7 @@ export default function Projects() {
               Course Selling Website
             </h2>
             <p className="text-gray-500">
-              A platform for selling online courses with secure payments and user dashboard. (Coming soon)
+              A platform for selling online courses with secure payments and user dashboard. under professional Development <br></br>(Coming soon)
             </p>
           </div>
         </motion.div>
