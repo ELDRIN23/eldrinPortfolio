@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showHint, setShowHint] = useState(true);
+  const [activeSection, setActiveSection] = useState(""); // NEW: track active section
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
+  const location = useLocation();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -13,6 +15,24 @@ export default function Navbar() {
   };
 
   const closeDropdown = () => setIsOpen(false);
+
+  // NEW: Track scroll to highlight links
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]");
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -35,13 +55,26 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  const goldLinkClasses =
-    "block px-4 py-3 text-yellow-400 font-semibold rounded-lg relative overflow-hidden " +
-    "transition-all duration-300 ease-in-out " +
-    "hover:text-black hover:scale-105 " +
-    "hover:shadow-[0_0_15px_4px_rgba(255,215,0,0.85)] " +
-    "before:absolute before:inset-0 before:bg-gradient-to-r before:from-yellow-300/30 before:via-yellow-400/40 before:to-yellow-300/30 " +
-    "before:opacity-0 before:blur-md before:transform before:-translate-x-full before:transition-transform before:duration-500 hover:before:translate-x-0 hover:before:opacity-100";
+  // Smooth scroll to section (mobile only)
+  const scrollToSection = (id) => {
+    if (window.innerWidth < 1024 && location.pathname === "/") {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+        closeDropdown();
+      }
+    }
+  };
+
+  const goldLinkClasses = (id) =>
+    `block px-4 py-3 font-semibold rounded-lg relative overflow-hidden 
+     transition-all duration-300 ease-in-out 
+     hover:text-black hover:scale-105 
+     hover:shadow-[0_0_15px_4px_rgba(255,215,0,0.85)] 
+     before:absolute before:inset-0 before:bg-gradient-to-r before:from-yellow-300/30 before:via-yellow-400/40 before:to-yellow-300/30 
+     before:opacity-0 before:blur-md before:transform before:-translate-x-full before:transition-transform before:duration-500 
+     hover:before:translate-x-0 hover:before:opacity-100 
+     ${activeSection === id ? "text-yellow-300 scale-105" : "text-yellow-400"}`;
 
   const premiumButton =
     "btn relative bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 text-primary-content " +
@@ -62,10 +95,10 @@ export default function Navbar() {
 
       {/* Desktop menu */}
       <ul className="menu menu-horizontal px-1 hidden lg:flex items-center gap-4">
-        <li><Link to="/" className={goldLinkClasses}>Home</Link></li>
-        <li><Link to="/about" className={goldLinkClasses}>About</Link></li>
-        <li><Link to="/projects" className={goldLinkClasses}>Projects</Link></li>
-        <li><Link to="/contact" className={goldLinkClasses}>Contact</Link></li>
+        <li><Link to="/" className={goldLinkClasses("home")}>Home</Link></li>
+        <li><Link to="/about" className={goldLinkClasses("about")}>About</Link></li>
+        <li><Link to="/projects" className={goldLinkClasses("projects")}>Projects</Link></li>
+        <li><Link to="/contact" className={goldLinkClasses("contact")}>Contact</Link></li>
         <li>
           <Link to="/know-more" className={premiumButton}>
             Know More About Me
@@ -73,7 +106,7 @@ export default function Navbar() {
         </li>
       </ul>
 
-      {/* 3-dot icon (mobile only, fixed) */}
+      {/* Mobile menu toggle */}
       <div className="fixed top-4 right-4 flex items-center gap-3 z-[10000] lg:hidden">
         {showHint && !isOpen && (
           <div className="flex items-center gap-1 animate-bounce">
@@ -89,7 +122,6 @@ export default function Navbar() {
           </div>
         )}
 
-        {/* Menu button */}
         <button
           ref={buttonRef}
           onClick={toggleDropdown}
@@ -121,10 +153,34 @@ export default function Navbar() {
             border border-purple-600 backdrop-blur-md bg-opacity-80
             transition-all duration-500 ease-in-out animate-slideDown z-[9998]"
         >
-          <li><Link to="/" onClick={closeDropdown} className={goldLinkClasses}>Home</Link></li>
-          <li><Link to="/about" onClick={closeDropdown} className={goldLinkClasses}>About</Link></li>
-          <li><Link to="/projects" onClick={closeDropdown} className={goldLinkClasses}>Projects</Link></li>
-          <li><Link to="/contact" onClick={closeDropdown} className={goldLinkClasses}>Contact</Link></li>
+          <li>
+            {location.pathname === "/" && window.innerWidth < 1024 ? (
+              <button onClick={() => scrollToSection("home")} className={goldLinkClasses("home")}>Home</button>
+            ) : (
+              <Link to="/" onClick={closeDropdown} className={goldLinkClasses("home")}>Home</Link>
+            )}
+          </li>
+          <li>
+            {location.pathname === "/" && window.innerWidth < 1024 ? (
+              <button onClick={() => scrollToSection("about")} className={goldLinkClasses("about")}>About</button>
+            ) : (
+              <Link to="/about" onClick={closeDropdown} className={goldLinkClasses("about")}>About</Link>
+            )}
+          </li>
+          <li>
+            {location.pathname === "/" && window.innerWidth < 1024 ? (
+              <button onClick={() => scrollToSection("projects")} className={goldLinkClasses("projects")}>Projects</button>
+            ) : (
+              <Link to="/projects" onClick={closeDropdown} className={goldLinkClasses("projects")}>Projects</Link>
+            )}
+          </li>
+          <li>
+            {location.pathname === "/" && window.innerWidth < 1024 ? (
+              <button onClick={() => scrollToSection("contact")} className={goldLinkClasses("contact")}>Contact</button>
+            ) : (
+              <Link to="/contact" onClick={closeDropdown} className={goldLinkClasses("contact")}>Contact</Link>
+            )}
+          </li>
           <li>
             <Link
               to="/know-more"

@@ -7,8 +7,8 @@ export default function KnowMore() {
         Know More About Me
       </h1>
       <p className="max-w-3xl text-lg md:text-xl leading-relaxed text-center text-gray-400">
-        👋 Hi! Sign up to learn more about me, explore my innovative ideas, and
-        become a startup partner. Let’s build something amazing together.
+        👋 Hi! Sign up to learn more about me, explore my innovative ideas,
+        Let’s build something amazing together.
       </p>
 
       <div className="flex flex-col sm:flex-row gap-8 w-full max-w-md justify-center">
@@ -33,22 +33,6 @@ export default function KnowMore() {
         >
           Login
         </Link>
-      </div>
-
-      {/* Download CV Section */}
-      <div className="mt-10 flex flex-col items-center gap-4">
-        <p className="text-gray-400 text-center max-w-sm">
-          Or you can download my CV to know more about my experience and skills.
-        </p>
-        <a
-          href="/eldrinUpdatedaCv.pdf" // make sure this file is in your public folder
-          download
-          className="inline-block px-12 py-4 bg-yellow-400 text-[#0f111a] font-bold rounded-lg
-                     hover:bg-yellow-500 transition duration-300 ease-in-out shadow-lg
-                     focus:outline-none focus:ring-4 focus:ring-yellow-400/50"
-        >
-          Download My CV
-        </a>
       </div>
     </div>
   );

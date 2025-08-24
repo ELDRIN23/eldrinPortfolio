@@ -4,18 +4,20 @@ const skills = [
   "JavaScript",
   "React",
   "Node.js",
-  "Express",
+  "Express.js",
   "MongoDB",
+  "Tailwind css",
   "Burp suite",
   "CRUD",
   "Python",
+  "SQL",
   "Git & GitHub",
 ];
 
 export default function Home() {
   return (
-    <section className="min-h-[80vh] px-6 sm:px-12 max-w-7xl mx-auto">
-      {/* Heading + Subtitle on mobile only */}
+    <section id="home" className="min-h-[80vh] px-6 sm:px-12 max-w-7xl mx-auto">
+      {/* Heading on mobile only */}
       <motion.div
         className="text-center mb-8 lg:hidden"
         initial={{ opacity: 0, y: -20 }}
@@ -25,9 +27,6 @@ export default function Home() {
         <h1 className="text-4xl sm:text-5xl font-bold">
           Hi, I’m <span className="text-primary">Eldrin Johnson</span>
         </h1>
-        <h2 className="text-2xl sm:text-3xl mt-2 text-secondary font-semibold">
-          I’m a Full Stack Web Developer
-        </h2>
       </motion.div>
 
       <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-10">
@@ -50,10 +49,11 @@ export default function Home() {
 
           {/* About text */}
           <p className="text-base sm:text-lg text-gray-600 mb-6 max-w-md">
-            I specialize in developing high-quality web applications using modern
-            technologies. I excel at transforming complex challenges into elegant,
-            user-friendly solutions. Additionally, I’m a cybersecurity enthusiast
-            committed to ensuring secure and resilient digital environments.
+            I specialize in developing high-quality web applications using
+            modern technologies. I excel at transforming complex challenges into
+            elegant, user-friendly solutions. Additionally, I’m a cybersecurity
+            enthusiast committed to ensuring secure and resilient digital
+            environments.
           </p>
 
           {/* Certified text + button only visible on desktop */}
@@ -75,7 +75,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 0 15px 3px rgba(59, 130, 246, 0.8)" }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 0 15px 3px rgba(59, 130, 246, 0.8)",
+            }}
           >
             <img
               src="/myself.jpg"
@@ -84,6 +87,13 @@ export default function Home() {
             />
           </motion.div>
 
+          {/* Mobile subtitle below profile picture */}
+          <div className="lg:hidden text-center mb-6">
+            <h2 className="text-2xl sm:text-3xl text-secondary font-semibold">
+              I’m a Full Stack Web Developer
+            </h2>
+          </div>
+
           {/* Skills */}
           <motion.div
             className="w-full bg-base-300 rounded-lg p-5 shadow-md text-center"
@@ -91,7 +101,9 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <h3 className="text-primary text-lg sm:text-xl font-bold mb-4">My Skills</h3>
+            <h3 className="text-primary text-lg sm:text-xl font-bold mb-4">
+              My Skills
+            </h3>
             <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-white font-semibold text-xs sm:text-sm">
               {skills.map((skill) => (
                 <motion.li
