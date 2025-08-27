@@ -4,17 +4,17 @@ import { useLocation } from "react-router-dom";
 
 export default function GithubModal() {
   const [isOpen, setIsOpen] = useState(false);
-  const [remainingTime, setRemainingTime] = useState(8); // 8s visible
+  const [remainingTime, setRemainingTime] = useState(10); // 10s visible
   const location = useLocation();
 
   useEffect(() => {
     let openTimer, closeTimer, countdown;
 
     if (location.pathname === "/projects") {
-      // Open after 5s
+      // Open after 5s delay
       openTimer = setTimeout(() => {
         setIsOpen(true);
-        setRemainingTime(8); // reset countdown
+        setRemainingTime(10); // reset countdown
 
         // countdown every second
         countdown = setInterval(() => {
@@ -28,7 +28,7 @@ export default function GithubModal() {
         }, 1000);
       }, 5000);
 
-
+      // Auto close after 15s (5s delay + 10s visible)
       closeTimer = setTimeout(() => {
         setIsOpen(false);
       }, 15000);
@@ -48,23 +48,16 @@ export default function GithubModal() {
       className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm z-50"
       onClick={() => setIsOpen(false)}
     >
-      {/* Modal */}
       <div
         className="bg-white rounded-xl shadow-xl p-6 max-w-sm w-[90%] text-center relative animate-fade-in"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Title */}
         <h2 className="text-xl font-bold text-gray-800 mb-3">
           ⭐ Enjoying my projects?
         </h2>
-
-        {/* Message */}
         <p className="text-gray-600 mb-4">
-          Follow me on GitHub — I know you’ll like it,  
-          and it would really make my day!
+          Follow me on GitHub — I know you’ll like it, and it would really make my day!
         </p>
-
-        {/* GitHub button */}
         <a
           href="https://github.com/ELDRIN23"
           target="_blank"
@@ -74,13 +67,9 @@ export default function GithubModal() {
           <Github size={20} />
           Visit My GitHub
         </a>
-
-        {/* Countdown text */}
         <p className="text-sm text-gray-500 mt-4">
           This will close in <span className="font-semibold">{remainingTime}</span>s
         </p>
-
-        {/* Close button */}
         <button
           onClick={() => setIsOpen(false)}
           className="absolute top-3 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold"
