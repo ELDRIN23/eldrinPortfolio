@@ -62,16 +62,18 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center p-6 sm:p-8 md:p-12 relative">
-      {/* Hire Me Button (Responsive) */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 sm:left-auto sm:right-6 sm:translate-x-0">
+      {/* Hire Me Button (Top Center) */}
+      <div className="absolute top-6 left-1/2 -translate-x-1/2">
         <a
-          href="mailto:eldrinjohnson77@gmail.com"
-          className="flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-3 
-                     bg-blue-600 text-white text-base sm:text-lg font-semibold 
-                     rounded-full shadow-lg hover:bg-blue-700 
-                     transition-transform hover:scale-105"
+          href="https://mail.google.com/mail/?view=cm&to=eldrinjohnson77@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 px-7 py-4 
+               bg-blue-600 text-white text-lg font-bold 
+               rounded-full shadow-xl hover:bg-blue-700 
+               transition-transform hover:scale-105"
         >
-          <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+          <Mail className="w-6 h-6" />
           Hire Me
         </a>
       </div>

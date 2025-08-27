@@ -95,10 +95,26 @@ export default function Navbar() {
 
       {/* Desktop menu */}
       <ul className="menu menu-horizontal px-1 hidden lg:flex items-center gap-4">
-        <li><Link to="/" className={goldLinkClasses("home")}>Home</Link></li>
-        <li><Link to="/about" className={goldLinkClasses("about")}>About</Link></li>
-        <li><Link to="/projects" className={goldLinkClasses("projects")}>Projects</Link></li>
-        <li><Link to="/contact" className={goldLinkClasses("contact")}>Contact</Link></li>
+        <li>
+          <Link to="/" className={goldLinkClasses("home")}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/about" className={goldLinkClasses("about")}>
+            About
+          </Link>
+        </li>
+        <li>
+          <Link to="/projects" className={goldLinkClasses("projects")}>
+            Projects
+          </Link>
+        </li>
+        <li>
+          <Link to="/contact" className={goldLinkClasses("contact")}>
+            Contact
+          </Link>
+        </li>
         <li>
           <Link to="/know-more" className={premiumButton}>
             Know More About Me
@@ -113,11 +129,19 @@ export default function Navbar() {
             <span className="text-yellow-300 text-lg font-bold drop-shadow-[0_0_5px_rgba(255,215,0,0.9)] whitespace-nowrap">
               View More
             </span>
-            <svg xmlns="http://www.w3.org/2000/svg"
-              fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
               className="w-6 h-6 text-yellow-300 drop-shadow-[0_0_6px_rgba(255,215,0,0.8)]"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </div>
         )}
@@ -134,13 +158,43 @@ export default function Navbar() {
             before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-r before:from-purple-400 before:via-pink-500 before:to-red-500
             before:opacity-60 before:blur-lg before:animate-flicker"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-            viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
-            strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 relative z-10"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-6 h-6 relative z-10"
           >
-            <line className={`transition-transform duration-500 ease-in-out origin-center ${isOpen ? "translate-y-6 rotate-45" : "translate-y-0 rotate-0"}`} x1="3" y1="6" x2="21" y2="6" />
-            <line className={`transition-opacity duration-300 ease-in-out ${isOpen ? "opacity-0" : "opacity-100"}`} x1="3" y1="12" x2="21" y2="12" />
-            <line className={`transition-transform duration-500 ease-in-out origin-center ${isOpen ? "-translate-y-6 -rotate-45" : "translate-y-0 rotate-0"}`} x1="3" y1="18" x2="21" y2="18" />
+            <line
+              className={`transition-transform duration-500 ease-in-out origin-center ${
+                isOpen ? "translate-y-6 rotate-45" : "translate-y-0 rotate-0"
+              }`}
+              x1="3"
+              y1="6"
+              x2="21"
+              y2="6"
+            />
+            <line
+              className={`transition-opacity duration-300 ease-in-out ${
+                isOpen ? "opacity-0" : "opacity-100"
+              }`}
+              x1="3"
+              y1="12"
+              x2="21"
+              y2="12"
+            />
+            <line
+              className={`transition-transform duration-500 ease-in-out origin-center ${
+                isOpen ? "-translate-y-6 -rotate-45" : "translate-y-0 rotate-0"
+              }`}
+              x1="3"
+              y1="18"
+              x2="21"
+              y2="18"
+            />
           </svg>
         </button>
       </div>
@@ -150,46 +204,43 @@ export default function Navbar() {
         <ul
           ref={menuRef}
           className="fixed top-20 right-4 flex flex-col gap-3 p-4 shadow-2xl bg-primary rounded-xl w-56
-            border border-purple-600 backdrop-blur-md bg-opacity-80
-            transition-all duration-500 ease-in-out animate-slideDown z-[9998]"
+      border border-purple-600 backdrop-blur-md bg-opacity-80
+      transition-all duration-500 ease-in-out animate-slideDown z-[9998]"
         >
-          <li>
-            {location.pathname === "/" && window.innerWidth < 1024 ? (
-              <button onClick={() => scrollToSection("home")} className={goldLinkClasses("home")}>Home</button>
-            ) : (
-              <Link to="/" onClick={closeDropdown} className={goldLinkClasses("home")}>Home</Link>
-            )}
-          </li>
-          <li>
-            {location.pathname === "/" && window.innerWidth < 1024 ? (
-              <button onClick={() => scrollToSection("about")} className={goldLinkClasses("about")}>About</button>
-            ) : (
-              <Link to="/about" onClick={closeDropdown} className={goldLinkClasses("about")}>About</Link>
-            )}
-          </li>
-          <li>
-            {location.pathname === "/" && window.innerWidth < 1024 ? (
-              <button onClick={() => scrollToSection("projects")} className={goldLinkClasses("projects")}>Projects</button>
-            ) : (
-              <Link to="/projects" onClick={closeDropdown} className={goldLinkClasses("projects")}>Projects</Link>
-            )}
-          </li>
-          <li>
-            {location.pathname === "/" && window.innerWidth < 1024 ? (
-              <button onClick={() => scrollToSection("contact")} className={goldLinkClasses("contact")}>Contact</button>
-            ) : (
-              <Link to="/contact" onClick={closeDropdown} className={goldLinkClasses("contact")}>Contact</Link>
-            )}
-          </li>
-          <li>
-            <Link
-              to="/know-more"
-              onClick={closeDropdown}
-              className={premiumButton}
-            >
-              Know More About Me
-            </Link>
-          </li>
+          {[
+            { id: "home", label: "Home", path: "/" },
+            { id: "about", label: "About", path: "/about" },
+            { id: "projects", label: "Projects", path: "/projects" },
+            { id: "contact", label: "Contact", path: "/contact" },
+            {
+              id: "know-more",
+              label: "Know More About Me",
+              path: "/know-more",
+              premium: true,
+            },
+          ].map((item) => {
+            const isHomeSection = location.pathname === "/" && !item.premium;
+            const handleClick = () => {
+              if (isHomeSection) {
+                scrollToSection(item.id); // scroll smoothly
+              }
+              closeDropdown(); // always close the dropdown
+            };
+
+            return (
+              <li key={item.id}>
+                <Link
+                  to={item.path}
+                  onClick={handleClick}
+                  className={
+                    item.premium ? premiumButton : goldLinkClasses(item.id)
+                  }
+                >
+                  {item.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       )}
 

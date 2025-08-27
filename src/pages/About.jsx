@@ -86,7 +86,7 @@ export default function About() {
             education, and professional experience.
           </p>
           <a
-            href="/eldrinUpdatedaCv.pdf" // keep PDF in public folder
+            href="/EldrinJohnson.pdf" // keep PDF in public folder
             download
             className="w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 
                bg-gradient-to-r from-blue-600 to-blue-700 
