@@ -28,10 +28,10 @@ export default function GithubModal() {
         }, 1000);
       }, 5000);
 
-      // Auto close after 13s (5s delay + 8s visible)
+
       closeTimer = setTimeout(() => {
         setIsOpen(false);
-      }, 13000);
+      }, 15000);
     }
 
     return () => {
