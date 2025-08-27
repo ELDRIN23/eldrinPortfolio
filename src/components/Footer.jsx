@@ -32,15 +32,7 @@ export default function Footer() {
           >
             <Instagram size={20} />
           </a>
-          <a
-            href="https://www.facebook.com/share/1BnK8tbZ1t/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-primary"
-            aria-label="Facebook"
-          >
-            <Facebook size={20} />
-          </a>
+
           <a
             href="https://github.com/ELDRIN23"
             target="_blank"
@@ -49,6 +41,15 @@ export default function Footer() {
             aria-label="GitHub"
           >
             <Github size={20} />
+          </a>
+          <a
+            href="https://www.facebook.com/share/1BnK8tbZ1t/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary"
+            aria-label="Facebook"
+          >
+            <Facebook size={20} />
           </a>
 
           {/* Google Developers Profile */}
