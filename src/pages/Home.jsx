@@ -43,7 +43,7 @@ export default function Home() {
               Hi, I’m <span className="text-primary">Eldrin Johnson</span>
             </h1>
             <h2 className="text-3xl mt-3 text-secondary font-semibold">
-              I’m a Full Stack Web Developer
+              I’m a Full Stack Developer & Cybersecurity Enthusiast
             </h2>
           </div>
 
@@ -89,8 +89,8 @@ export default function Home() {
 
           {/* Mobile subtitle below profile picture */}
           <div className="lg:hidden text-center mb-6">
-            <h2 className="text-2xl sm:text-3xl text-secondary font-semibold">
-              I’m a Full Stack Web Developer
+            <h2 className="text-2xl sm:text-3xl text-secondary font-semibold max-w-xs sm:max-w-full mx-auto leading-snug">
+              I’m a Full Stack Developer & Cybersecurity Enthusiast
             </h2>
           </div>
 
