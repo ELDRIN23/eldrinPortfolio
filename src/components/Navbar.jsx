@@ -116,10 +116,15 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
+          <Link to="/ContactForm" className={goldLinkClasses("contact")}>
+            Connect
+          </Link>
+        </li>
+        {/* <li>
           <Link to="/know-more" className={premiumButton}>
             Know More About Me
           </Link>
-        </li>
+        </li> */}
       </ul>
 
       {/* Mobile menu toggle */}
@@ -212,12 +217,7 @@ export default function Navbar() {
             { id: "about", label: "About", path: "/about" },
             { id: "projects", label: "Projects", path: "/projects" },
             { id: "contact", label: "Contact", path: "/contact" },
-            {
-              id: "know-more",
-              label: "Know More About Me",
-              path: "/know-more",
-              premium: true,
-            },
+            { id: "ContactForm", label: "connect", path: "/ContactForm" },
           ].map((item) => {
             const isHomeSection = location.pathname === "/" && !item.premium;
             const handleClick = () => {
