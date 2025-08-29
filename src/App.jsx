@@ -6,8 +6,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-import Signup from "./pages/signup";
-import Login from "./pages/login";
 import ContactForm from "./pages/ConnectMe";
 
 export default function App() {
@@ -28,8 +26,6 @@ export default function App() {
         <Route path="projects" element={<Projects />} />
         <Route path="contact" element={<Contact />} />
         <Route path="ContactForm" element={<ContactForm />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="login" element={<Login />} />
       </Route>
     </Routes>
   );
