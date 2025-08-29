@@ -1,185 +1,151 @@
 import { Linkedin, Instagram, Github, Mail } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
+// Google Dev Icon (closer to the original G logo style)
 const GoogleDevIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
-    strokeLinecap="round"
-    strokeLinejoin="round"
+    fill="currentColor"
     {...props}
   >
-    <circle cx="12" cy="12" r="10" />
-    <path d="M8 14l4-4 4 4" />
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm0 3c1.66 0 3.14.69 4.22 1.78l-1.42 1.42C14.24 7.24 13.17 7 12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5c1.3 0 2.48-.51 3.36-1.34l1.42 1.42C16.14 17.31 14.66 18 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6z" />
   </svg>
 );
 
 export default function Contact() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "1.2 1"],
+  });
+
+  // Parallax for heading + text
+  const yHeading = useTransform(scrollYProgress, [0, 1], [50, 0]);
+  const opacityHeading = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   const socialLinks = [
     {
       href: "https://www.linkedin.com/in/eldrin-johnson",
       Icon: Linkedin,
       label: "LinkedIn",
+      username: "@eldrinjohnson",
+      description: "Connect with me here",
       status: "Super Active",
-      gradientId: "linkedinGradient",
-      colors: ["#0077B5", "#00C6FF"],
     },
     {
       href: "https://github.com/ELDRIN23",
       Icon: Github,
       label: "GitHub",
-      status: "Active",
-      gradientId: "githubGradient",
-      colors: ["#333", "#6e5494"],
+      username: "@ELDRIN23",
+      description: "Checkout my repositories",
+      status: "Super Active",
     },
     {
       href: "https://www.instagram.com/_e_ldrin/",
       Icon: Instagram,
       label: "Instagram",
+      username: "@_e_ldrin",
+      description: "Follow me for updates",
       status: "Active",
-      gradientId: "instagramGradient",
-      colors: ["#f09433", "#e6683c", "#dc2743", "#cc2366", "#bc1888"],
     },
     {
       href: "https://g.dev/Eldrin",
       Icon: GoogleDevIcon,
-      label: "Google Developers",
+      label: "Google Dev",
+      username: "@EldrinDev",
+      description: "Occasionally active",
       status: "Occasionally Active",
-      gradientId: "googleDevGradient",
-      colors: ["#4285F4", "#34A853", "#FBBC05", "#EA4335"],
     },
   ];
 
   const statusColors = {
-    "Super Active": "text-green-600 group-hover:text-green-700",
-    Active: "text-blue-600 group-hover:text-blue-700",
-    "Sometimes Active": "text-purple-600 group-hover:text-purple-700",
-    "Occasionally Active": "text-yellow-600 group-hover:text-yellow-700",
-    Inactive: "text-gray-500 group-hover:text-gray-600",
+    "Super Active": "text-green-500",
+    Active: "text-cyan-400",
+    "Occasionally Active": "text-yellow-400",
+    Inactive: "text-gray-400",
   };
 
   return (
-    <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center p-6 sm:p-8 md:p-12 relative">
-      {/* Hire Me Button (Top Center) */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2">
-        <a
-          href="https://mail.google.com/mail/?view=cm&to=eldrinjohnson77@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 px-7 py-4 
-               bg-blue-600 text-white text-lg font-bold 
-               rounded-full shadow-xl hover:bg-blue-700 
-               transition-transform hover:scale-105"
-        >
-          <Mail className="w-6 h-6" />
-          Hire Me
-        </a>
-      </div>
+    <div
+      ref={ref}
+      className="min-h-screen bg-[#141313] flex flex-col items-center justify-start py-12 px-4 sm:px-6 md:px-12 gap-8 overflow-hidden"
+    >
+      {/* Hire Me Button at Top with Shake Animation */}
+      <motion.a
+        href="https://mail.google.com/mail/?view=cm&to=eldrinjohnson77@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-3 px-7 py-4 bg-cyan-400 text-black font-bold rounded-full shadow-lg hover:bg-cyan-500 transition-colors mb-6"
+        animate={{ x: [0, -5, 5, -5, 5, 0] }}
+        transition={{ repeat: Infinity, duration: 1.5 }}
+      >
+        <Mail className="w-6 h-6" />
+        Hire Me
+      </motion.a>
 
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 text-primary drop-shadow-lg animate-pulse text-center">
-        Get in Touch!
-      </h1>
+      {/* Heading */}
+      <motion.h1
+        className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-cyan-400 text-center"
+        initial={{ opacity: 0, x: 100 }} // from right (mobile effect)
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        Connect With Me
+      </motion.h1>
 
-      <p className="max-w-lg sm:max-w-xl md:max-w-2xl text-center mb-10 text-base sm:text-lg font-semibold text-base-content/80">
-        I’d love to connect with you! Reach out on any of the platforms below
-        and follow me to stay updated.
-      </p>
+      {/* Intro */}
+      <motion.p
+        style={{ y: yHeading, opacity: opacityHeading }}
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
+        viewport={{ once: true }}
+        className="max-w-lg sm:max-w-xl text-center mb-6 text-gray-300 text-base sm:text-lg"
+      >
+        I’m open to new projects, opportunities, or collaborations. Reach out
+        through any of the platforms below.
+      </motion.p>
 
-      {/* Social Icons + Labels */}
-      <div className="flex gap-8 sm:gap-12 flex-wrap justify-center relative z-10">
-        {/* SVG gradients */}
-        <svg style={{ position: "absolute", width: 0, height: 0 }}>
-          <defs>
-            {socialLinks.map(({ gradientId, colors }) => (
-              <linearGradient
-                key={gradientId}
-                id={gradientId}
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                {colors.map((color, i) => (
-                  <stop
-                    key={color}
-                    offset={`${(i / (colors.length - 1)) * 100}%`}
-                    stopColor={color}
-                  >
-                    <animate
-                      attributeName="stop-color"
-                      values={`${color};${
-                        colors[(i + 1) % colors.length]
-                      };${color}`}
-                      dur="6s"
-                      repeatCount="indefinite"
-                    />
-                  </stop>
-                ))}
-              </linearGradient>
-            ))}
-          </defs>
-        </svg>
-
-        {socialLinks.map(({ href, Icon, label, gradientId, status }) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            className="flex flex-col items-center gap-2 group"
-          >
-            <div
-              className={`transform rounded-full bg-white p-4 sm:p-5 shadow-lg cursor-pointer
-                transition duration-500 ease-in-out
-                hover:scale-110 hover:-translate-y-1
-                hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]
-                hover:animate-hoverPulse
-                flex items-center justify-center
-                w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24
-                rotate-slow`}
+      {/* Social Links Cards */}
+      <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 w-full max-w-4xl">
+        {socialLinks.map(
+          ({ href, Icon, label, username, description, status }, i) => (
+            <motion.a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{
+                opacity: 0,
+                x: i % 2 === 0 ? -100 : 100,
+                y: i % 2 === 0 ? -50 : 50,
+              }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: i * 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, rotate: i % 2 === 0 ? -1 : 1 }}
+              className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 p-5 border border-gray-500 rounded-xl bg-[#1c1c1c] w-full sm:w-[300px] hover:border-cyan-400 transition-colors shadow-lg"
             >
-              <Icon
-                size={24}
-                className="sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16"
-                stroke={`url(#${gradientId})`}
-                strokeWidth={1.8}
-              />
-            </div>
-            {/* Label + Status */}
-            <div className="text-center">
-              <p className="text-sm font-semibold">{label}</p>
-              <p className={`text-xs ${statusColors[status]}`}>{status}</p>
-            </div>
-          </a>
-        ))}
+              <div className="bg-gray-100 p-4 rounded-full flex items-center justify-center w-16 h-16">
+                <Icon size={28} className="text-black" />
+              </div>
+              <div className="flex flex-col text-left">
+                <p className="font-bold text-white text-lg">{label}</p>
+                <p className="text-gray-400 text-sm">{username}</p>
+                <p className="text-gray-300 text-sm">• {description}</p>
+                <p
+                  className={`text-xs mt-1 font-semibold ${statusColors[status]}`}
+                >
+                  {status}
+                </p>
+              </div>
+            </motion.a>
+          )
+        )}
       </div>
-
-      {/* Animations */}
-      <style>{`
-        @keyframes rotateSlow {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        .rotate-slow {
-          animation: rotateSlow 20s linear infinite;
-        }
-        @keyframes hoverPulse {
-          0%, 100% {
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
-            transform: scale(1) translateY(0);
-          }
-          50% {
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
-            transform: scale(1.1) translateY(-4px);
-          }
-        }
-        .animate-hoverPulse {
-          animation: hoverPulse 1.5s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 }
