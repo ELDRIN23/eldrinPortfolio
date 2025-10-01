@@ -26,7 +26,7 @@ export default function Home() {
         className="text-center mb-8 lg:hidden"
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <h1 className="text-4xl sm:text-5xl font-bold">
           Hi, I’m <span className="text-cyan-400">Eldrin Johnson</span>
@@ -42,7 +42,7 @@ export default function Home() {
             initial={{ opacity: 0, x: -120 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, type: "spring" }}
+            transition={{ duration: 0.5, type: "spring", stiffness: 150 }}
           >
             <h1 className="text-6xl font-bold">
               Hi, I’m <span className="text-cyan-400">Eldrin Johnson</span>
@@ -55,10 +55,10 @@ export default function Home() {
           {/* About text */}
           <motion.p
             className="text-base sm:text-lg text-gray-400 max-w-md"
-            initial={{ opacity: 0, x: 120 }} // opposite direction
+            initial={{ opacity: 0, x: 120 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, type: "spring", stiffness: 70 }}
+            transition={{ duration: 0.5, type: "spring", stiffness: 150 }}
           >
             I specialize in developing high-quality web applications using
             modern technologies. I excel at transforming complex challenges into
@@ -73,7 +73,7 @@ export default function Home() {
             initial={{ opacity: 0, x: -120 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, type: "spring", stiffness: 70 }}
+            transition={{ duration: 0.5, type: "spring", stiffness: 150 }}
           >
             <p className="text-white font-semibold mb-8">
               I’m a Certified developer from Illinois Institute of Technology,
@@ -83,7 +83,7 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Right side (Profile + Skills + Cert in mobile) */}
+        {/* Right side (Profile + Expertise + Cert in mobile) */}
         <div className="flex-1 flex flex-col items-center max-w-md w-full">
           {/* Profile Pic */}
           <motion.div
@@ -91,7 +91,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, type: "spring" }}
+            transition={{ duration: 0.5, type: "spring", stiffness: 150 }}
             whileHover={{
               scale: 1.05,
               boxShadow: "0 0 15px 3px rgba(34, 211, 238, 0.8)",
@@ -110,37 +110,38 @@ export default function Home() {
             initial={{ opacity: 0, x: -120 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.4 }}
           >
             <h2 className="text-2xl sm:text-3xl text-gray-300 font-semibold max-w-xs sm:max-w-full mx-auto leading-snug">
               I’m a Full Stack Developer & Cybersecurity Enthusiast
             </h2>
           </motion.div>
 
-          {/* Skills (unchanged but animated in grid) */}
+          {/* Expertise Section */}
           <motion.div
             className="w-full bg-[#141313] rounded-lg p-5 shadow-md text-center"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9, delay: 0.2 }}
+            transition={{ duration: 0.2 }}
           >
             <h3 className="text-cyan-400 text-lg sm:text-xl font-bold mb-4">
-              My Skills
+              My Expertise
             </h3>
             <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-white font-semibold text-xs sm:text-sm">
               {skills.map((skill, i) => (
                 <motion.li
                   key={skill}
                   className="bg-[#1c1c1c] rounded-md py-2 cursor-pointer select-none 
-                             transition-all duration-300 ease-in-out border border-cyan-400/30"
+                             transition-all duration-150 ease-in-out border border-cyan-400/30"
                   initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{
                     type: "spring",
-                    stiffness: 120,
-                    delay: i * 0.1,
+                    stiffness: 200,
+                    damping: 8,
+                    delay: i * 0.02, // very fast stagger
                   }}
                   whileHover={{
                     scale: 1.08,
@@ -162,7 +163,7 @@ export default function Home() {
             initial={{ opacity: 0, x: 120 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, type: "spring", stiffness: 70 }}
+            transition={{ duration: 0.5, type: "spring", stiffness: 150 }}
           >
             <p className="text-white font-semibold mb-6">
               I’m a Certified developer from Illinois Institute of Technology,
@@ -198,7 +199,7 @@ function CertificationButton() {
                    bg-gradient-to-r from-transparent via-white/40 to-transparent"
         style={{ filter: "blur(8px)" }}
         animate={{ x: ["-100%", "150%"] }}
-        transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
+        transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
       />
       <motion.img
         src="/OIP.jpg"
