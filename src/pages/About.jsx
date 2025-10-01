@@ -80,7 +80,7 @@ export default function About() {
           with innovative teams to create real-world solutions.
         </motion.p>
 
-        {/* CV Download Section */}
+        {/* CV View Section */}
         <motion.div
           className="mt-10 flex flex-col items-center gap-4"
           variants={textVariants}
@@ -89,24 +89,25 @@ export default function About() {
           transition={{ delay: 1.2, duration: 0.8 }}
         >
           <p className="text-gray-400 text-center max-w-md">
-            Download my CV to explore more about my skills, education, and
+            View my CV to explore more about my skills, education, and
             experience.
           </p>
           <a
-            href="/EldrinJohnson.pdf"
-            download
+            href="https://eldrinjohnson.my.canva.site/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 bg-cyan-400 text-black font-semibold text-sm sm:text-base rounded-xl shadow-lg hover:bg-cyan-500 transition-all duration-300 text-center"
           >
-            Download My CV
+            View My CV
           </a>
         </motion.div>
 
         {/* Hashtag Signature */}
         <motion.div
           className="mt-16 text-right text-primary font-semibold italic text-base sm:text-lg"
-          initial={{ opacity: 0, x: 100, y: 50 }} // comes from bottom-right outside
-          whileInView={{ opacity: 1, x: 0, y: 0 }} // animates in when visible
-          viewport={{ once: true, amount: 0.5 }} // trigger once, when 50% visible
+          initial={{ opacity: 0, x: 100, y: 50 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
           #thebestthingsnevercomeeasy

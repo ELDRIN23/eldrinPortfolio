@@ -6,13 +6,16 @@ const skills = [
   "Node.js",
   "Express.js",
   "MongoDB",
+  "SQL",
   "Tailwind CSS",
   "Burp Suite",
   "CRUD",
   "Python",
-  "SQL",
+  "API/REST",
   "Docker",
   "Git & GitHub",
+  "Java",
+  "TypeScript",
 ];
 
 export default function Home() {
@@ -32,9 +35,7 @@ export default function Home() {
 
       <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-10">
         {/* Left Side */}
-        <motion.div
-          className="flex-1 max-w-xl flex flex-col items-center lg:items-start text-center lg:text-left space-y-8"
-        >
+        <motion.div className="flex-1 max-w-xl flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
           {/* Desktop heading + subtitle only */}
           <motion.div
             className="hidden lg:block"
@@ -136,7 +137,11 @@ export default function Home() {
                   initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ type: "spring", stiffness: 120, delay: i * 0.1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 120,
+                    delay: i * 0.1,
+                  }}
                   whileHover={{
                     scale: 1.08,
                     boxShadow: "0 0 12px 4px rgba(34, 211, 238, 0.8)",

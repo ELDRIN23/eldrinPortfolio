@@ -13,17 +13,18 @@ export default function Navbar() {
     { path: "/", label: "Home" },
     { path: "/projects", label: "Projects" },
     { path: "/about", label: "About" },
-    { path: "/contact", label: "Contact" },
-    { path: "/ContactForm", label: "Connect" },
+    { path: "/contact", label: "Connect" },
+    { path: "/ContactForm", label: "Contact" },
   ];
 
   return (
     <motion.nav
-      className="w-full flex justify-center mt-12 mb-12 px-2"
-      initial={{ x: -200, opacity: 0 }}   // starts hidden on the left
-      animate={{ x: 0, opacity: 1 }}      // slides into place
+      className="w-full flex justify-center
+                 mt-25 lg:mt-12 mb-4 lg:mb-12 px-2"  // mobile: more top spacing
+      initial={{ x: -200, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
-      style={{ y: yParallax, opacity: opacityParallax }} // ✅ parallax + fade
+      style={{ y: yParallax, opacity: opacityParallax }}
     >
       <div className="bg-[#141313] rounded-2xl px-2 sm:px-6 md:px-10 py-3 sm:py-3 md:py-4 shadow-md w-full max-w-4xl">
         <ul className="flex justify-between md:justify-center items-center gap-2 sm:gap-6 md:gap-10">
