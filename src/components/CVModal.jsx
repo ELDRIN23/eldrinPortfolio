@@ -49,7 +49,7 @@ export default function GithubModal() {
       onClick={() => setIsOpen(false)}
     >
       <div
-        className="bg-white rounded-xl shadow-xl p-6 max-w-sm w-[90%] text-center relative animate-fade-in"
+        className="bg-white rounded-xl shadow-xl p-6 sm:p-8 max-w-md w-[90%] text-center relative animate-fade-in"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-xl font-bold text-gray-800 mb-3">
