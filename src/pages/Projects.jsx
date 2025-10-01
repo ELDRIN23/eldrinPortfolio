@@ -36,6 +36,19 @@ export default function Projects() {
       title: "Hackathon Projects",
       desc: "Collaborative projects created during hackathons focusing on innovation and problem-solving. Using LLMWare, Ollama & Pinecone and React frontend.",
       img: "/novathon2.png",
+      more: "https://eldrinjohnson.my.canva.site/novathon",
+    },
+    {
+      title: "Portfolio Web",
+      desc: "My portfolio website built using React, styled with TailwindCSS and DaisyUI, using React Router and Framer Motion animations.",
+      img: "/portfolio.png",
+      live: "https://eldrin23.github.io/portfolio/",
+    },
+    {
+      title: "E-commerce Website",
+      desc: "A responsive e-commerce website built with HTML, CSS, and Bootstrap with a carousel and product listing.",
+      img: "/ecom.png",
+      live: "https://eldrin23.github.io/entri/",
     },
     {
       title: "Course Selling Website",
@@ -118,42 +131,53 @@ export default function Projects() {
                   {proj.desc}
                 </p>
 
-                {/* Action Button */}
-                {proj.live && (
-                  <a
-                    href={proj.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-5 px-6 py-2 bg-sky-500 text-white rounded-lg font-medium shadow-lg
-                      hover:bg-sky-600 transition-colors duration-300"
-                  >
-                    View Live
-                  </a>
-                )}
-
-                {proj.button && (
-                  <>
-                    <button
-                      onClick={toggleTodoLive}
-                      className="mt-5 px-6 py-2 bg-sky-500 text-white rounded-lg font-medium shadow-lg
-                        hover:bg-sky-600 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-sky-400/50"
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-3 mt-5">
+                  {proj.live && (
+                    <a
+                      href={proj.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-6 py-2 bg-sky-500 text-white rounded-lg font-medium shadow-lg hover:bg-sky-600 transition-colors duration-300"
                     >
                       View Live
-                    </button>
-                    {todoLiveClicked && (
-                      <motion.p
-                        key="coming-soon"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.5 }}
-                        className="mt-4 text-sky-400 font-semibold text-lg tracking-wide select-none"
+                    </a>
+                  )}
+
+                  {proj.button && (
+                    <>
+                      <button
+                        onClick={toggleTodoLive}
+                        className="px-6 py-2 bg-sky-500 text-white rounded-lg font-medium shadow-lg hover:bg-sky-600 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-sky-400/50"
                       >
-                        Coming Soon
-                      </motion.p>
-                    )}
-                  </>
-                )}
+                        View Live
+                      </button>
+                      {todoLiveClicked && (
+                        <motion.p
+                          key="coming-soon"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.5 }}
+                          className="mt-4 text-sky-400 font-semibold text-lg tracking-wide select-none"
+                        >
+                          Coming Soon
+                        </motion.p>
+                      )}
+                    </>
+                  )}
+
+                  {proj.more && (
+                    <a
+                      href={proj.more}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block px-6 py-2 bg-cyan-500 text-white rounded-lg font-medium shadow-lg hover:bg-cyan-600 transition-colors duration-300"
+                    >
+                      Know More
+                    </a>
+                  )}
+                </div>
               </div>
             </motion.div>
           );
