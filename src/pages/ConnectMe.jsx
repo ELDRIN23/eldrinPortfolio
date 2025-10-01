@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
@@ -15,7 +15,7 @@ function ContactForm() {
 
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbyLORgqeWPK3QBcAGECumlUlXRZdzAsROAws6ST-dznRr6MAlYWrrD6HQP8orM94A3w/exec",
+        "https://script.google.com/macros/s/AKfycbz-10zKPwQXqbWPXKqqzMUZef0Wk-9wg9AF_VprCnW4EzOZU5qzEIOxaIZhBgAX--E/exec",
         {
           method: "POST",
           mode: "no-cors",
@@ -28,16 +28,15 @@ function ContactForm() {
       );
 
       setStatus("success");
-      setForm({ name: "", email: "", message: "" });
+      setForm({ name: "", email: "", phone: "", message: "" });
     } catch (err) {
       console.error("Form error:", err);
       setStatus("error");
     }
   };
 
-  // Reusable animation variant
   const floatIn = {
-    hidden: { opacity: 0, y: -60, scale: 0.9 }, // from above (air)
+    hidden: { opacity: 0, y: -60, scale: 0.9 },
     visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 80, damping: 15 } },
   };
 
@@ -46,7 +45,6 @@ function ContactForm() {
       className="min-h-screen bg-[#141313] flex flex-col items-center justify-start 
                     py-6 sm:py-12 px-4 sm:px-6 md:px-12 gap-8"
     >
-      {/* Heading */}
       <motion.h2
         className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 text-cyan-400 text-center"
         initial={{ opacity: 0, y: -80 }}
@@ -57,7 +55,6 @@ function ContactForm() {
         Send me a message
       </motion.h2>
 
-      {/* Intro text */}
       <motion.p
         className="text-center mb-6 text-gray-300 max-w-lg sm:max-w-xl text-base sm:text-lg"
         initial={{ opacity: 0, y: -50 }}
@@ -68,14 +65,13 @@ function ContactForm() {
         Always open to new projects or a friendly chat. I’ll get back to you as soon as possible.
       </motion.p>
 
-      {/* Form */}
       <motion.form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 w-full max-w-md"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ staggerChildren: 0.15 }} // staggered effect
+        transition={{ staggerChildren: 0.15 }}
       >
         <motion.input
           variants={floatIn}
@@ -99,6 +95,16 @@ function ContactForm() {
                      focus:border-cyan-400 focus:ring focus:ring-cyan-400 focus:ring-opacity-30 outline-none transition-colors"
           required
         />
+        <motion.input
+          variants={floatIn}
+          type="text"
+          name="phone"
+          placeholder="Phone"
+          value={form.phone}
+          onChange={handleChange}
+          className="w-full px-4 py-3 rounded-xl bg-[#1c1c1c] text-white placeholder-gray-400 border border-gray-500 
+                     focus:border-cyan-400 focus:ring focus:ring-cyan-400 focus:ring-opacity-30 outline-none transition-colors"
+        />
         <motion.textarea
           variants={floatIn}
           name="message"
@@ -118,31 +124,18 @@ function ContactForm() {
         </motion.button>
       </motion.form>
 
-      {/* Status messages */}
       {status === "loading" && (
-        <motion.p
-          className="text-cyan-400 mt-4 font-medium"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
+        <motion.p className="text-cyan-400 mt-4 font-medium" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           Sending your message...
         </motion.p>
       )}
       {status === "success" && (
-        <motion.p
-          className="text-green-400 mt-4 font-medium"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
+        <motion.p className="text-green-400 mt-4 font-medium" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           Message sent successfully 🎉
         </motion.p>
       )}
       {status === "error" && (
-        <motion.p
-          className="text-red-400 mt-4 font-medium"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
+        <motion.p className="text-red-400 mt-4 font-medium" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           Something went wrong. Try again.
         </motion.p>
       )}
