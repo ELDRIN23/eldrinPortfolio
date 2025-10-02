@@ -42,7 +42,7 @@ export default function Projects() {
       title: "Portfolio Web",
       desc: "My portfolio website built using React, styled with TailwindCSS and DaisyUI, using React Router and Framer Motion animations.",
       img: "/portfolio.png",
-      live: "https://eldrin23.github.io/portfolio/",
+      live: "https://eldrin23.vercel.app/",
     },
     {
       title: "E-commerce Website",
