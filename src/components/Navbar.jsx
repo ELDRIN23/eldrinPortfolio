@@ -11,10 +11,10 @@ export default function Navbar() {
 
   const links = [
     { path: "/", label: "Home" },
-    { path: "/projects", label: "Projects" },
-    { path: "/about", label: "About" },
-    { path: "/contact", label: "Connect" },
-    { path: "/ContactForm", label: "Contact" },
+    { path: "#project", label: "Projects" },
+    { path: "#about", label: "About" },
+    { path: "#contact", label: "Connect" },
+    { path: "#ContactForm", label: "Contact" },
   ];
 
   return (
@@ -37,8 +37,8 @@ export default function Navbar() {
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Link
-                    to={link.path}
+                  <a
+                    href={link.path}
                     className={`block font-semibold uppercase transition-colors duration-300
                       text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-lg
                       tracking-wide
@@ -54,7 +54,7 @@ export default function Navbar() {
                     }
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </motion.div>
               </li>
             );

@@ -5,7 +5,7 @@ import CVModal from "./CVModal";  // import the modal here
 
 export default function Layout() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen" style={{ scrollBehavior: "smooth" }}>
       {/* Navbar at the top */}
       <Navbar />
 

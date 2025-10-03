@@ -11,7 +11,7 @@ const textVariants = {
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-[#141313] py-6 sm:py-12 px-4 sm:px-6 flex items-center justify-center">
+    <div id="about" className="min-h-screen bg-[#141313] py-6 sm:py-12 px-4 sm:px-6 flex items-center justify-center">
       <motion.div
         className="w-full max-w-4xl mx-auto bg-[#1c1c1c] shadow-xl rounded-2xl p-6 sm:p-8"
         initial="hiddenUp"

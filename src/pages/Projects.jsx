@@ -71,7 +71,7 @@ export default function Projects() {
   ];
 
   return (
-    <div className="min-h-screen p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex flex-col items-center justify-center space-y-16">
+    <div id="project" className="min-h-screen p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex flex-col items-center justify-center space-y-16">
       {/* Heading */}
       <motion.h1
         className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 bg-clip-text text-transparent drop-shadow-lg"

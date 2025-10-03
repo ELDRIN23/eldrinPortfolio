@@ -118,6 +118,7 @@ export default function Contact() {
 
   return (
     <div
+      id="ContactForm"
       ref={ref}
       className="min-h-screen bg-[#141313] flex flex-col items-center justify-start py-12 px-4 sm:px-6 md:px-12 gap-8 overflow-hidden"
     >

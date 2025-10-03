@@ -1,4 +1,8 @@
 import { motion } from "framer-motion";
+import Projects from "./Projects";
+import About from "./About";
+import Contact from "./Contact";
+import ContactForm from "./ConnectMe";
 
 const skills = [
   "JavaScript",
@@ -173,6 +177,12 @@ export default function Home() {
           </motion.div>
         </div>
       </div>
+
+      <Projects />
+      <About />
+         <Contact />
+      <ContactForm />
+   
     </section>
   );
 }
