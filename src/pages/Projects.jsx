@@ -30,7 +30,7 @@ export default function Projects() {
       title: "Todo App",
       desc: "Task management tool built with React, Vite, and MongoDB supporting full CRUD operations with powerful features.",
       img: "/eldrinTodo.png",
-      button: true,
+      live: "https://eldrintodo.vercel.app/",
     },
     {
       title: "Hackathon Projects",
