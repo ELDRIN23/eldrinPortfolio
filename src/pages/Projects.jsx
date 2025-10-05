@@ -32,6 +32,12 @@ export default function Projects() {
       img: "/eldrinTodo.png",
       live: "https://eldrintodo.vercel.app/",
     },
+      {
+      title: "Midnight23",
+      desc: "My favourite music collections named midnight23 built using React, styled with TailwindCSS and DaisyUI.",
+      img: "/musicapp.png",
+      live: "https://midnight23.vercel.app/",
+    },
     {
       title: "Hackathon Projects",
       desc: "Collaborative projects created during hackathons focusing on innovation and problem-solving. Using LLMWare, Ollama & Pinecone and React frontend.",
