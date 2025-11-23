@@ -37,14 +37,14 @@ export default function Projects() {
       live: "https://midnight23.vercel.app/",
     },
     {
-      title: "Hackathon Projects",
+      title: "Novathon Projects",
       desc: "Collaborative projects created during hackathons focusing on innovation and problem-solving. Using LLMWare, Ollama & Pinecone and React frontend.",
       img: "/novathon2.jpg",
       more: "https://eldrinjohnson.my.canva.site/novathon",
     },
       {
-      title: "Hackathon Projects",
-      desc: "ai detection with deepfake v2 model using blockchain",
+      title: "THE BIG HACK",
+      desc: "hackathon project with ai detection with deepfake v2 model using blockchain",
       img: "/bigHack.jpg",
       more: "https://eldrinjohnson.my.canva.site/the-big-hack",
     },
