@@ -39,8 +39,14 @@ export default function Projects() {
     {
       title: "Hackathon Projects",
       desc: "Collaborative projects created during hackathons focusing on innovation and problem-solving. Using LLMWare, Ollama & Pinecone and React frontend.",
-      img: "/novathon2.png",
+      img: "/novathon2.jpg",
       more: "https://eldrinjohnson.my.canva.site/novathon",
+    },
+      {
+      title: "Hackathon Projects",
+      desc: "ai detection with deepfake v2 model using blockchain",
+      img: "/bigHack.jpg",
+      more: "https://eldrinjohnson.my.canva.site/the-big-hack",
     },
     {
       title: "Portfolio Web",
@@ -62,12 +68,6 @@ export default function Projects() {
     },
     {
       title: "Project Locked 1",
-      desc: "Details coming soon.",
-      img: "https://via.placeholder.com/400x200",
-      locked: true,
-    },
-    {
-      title: "Project Locked 2",
       desc: "Details coming soon.",
       img: "https://via.placeholder.com/400x200",
       locked: true,

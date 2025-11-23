@@ -4,10 +4,10 @@ import { motion, useScroll, useTransform } from "framer-motion";
 export default function Navbar() {
   const location = useLocation();
 
-  // ✅ Scroll-based parallax
+  // Scroll-based parallax
   const { scrollY } = useScroll();
-  const yParallax = useTransform(scrollY, [0, 200], [0, -25]); // slight upward shift on scroll
-  const opacityParallax = useTransform(scrollY, [0, 200], [1, 0.85]); // fades a bit while scrolling
+  const yParallax = useTransform(scrollY, [0, 200], [0, -25]);
+  const opacityParallax = useTransform(scrollY, [0, 200], [1, 0.85]);
 
   const links = [
     { path: "/", label: "Home" },
@@ -19,8 +19,7 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className="w-full flex justify-center
-                 mt-25 lg:mt-12 mb-4 lg:mb-12 px-2" // mobile: more top spacing
+      className="w-full flex justify-center px-2 mt-3 lg:mt-6 mb-2 lg:mb-4" // reduced top & bottom gap
       initial={{ x: -200, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
@@ -41,8 +40,7 @@ export default function Navbar() {
                     href={link.path}
                     className={`block font-semibold uppercase transition-colors duration-300
                       text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-lg
-                      tracking-wide
-                      px-2 sm:px-3 md:px-4 py-2
+                      tracking-wide px-2 sm:px-3 md:px-4 py-2
                       ${
                         isActive
                           ? "text-cyan-400"

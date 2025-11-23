@@ -25,12 +25,33 @@ const skills = [
 export default function Home() {
   return (
     <>
-      {/* No padding anywhere */}
       <style>{`
         html, body, #root {
           margin: 0 !important;
           padding: 0 !important;
           height: 100%;
+        }
+
+        /* Vertical divider for grid */
+        .mobile-skill-grid {
+          display: grid;
+          grid-template-columns: 1fr 1px 1fr;
+          gap: 18px;
+          align-items: start;
+        }
+
+        .divider {
+          background-color: #505050;
+          width: 1px;
+          height: 100%;
+          justify-self: center;
+        }
+
+        /* Bullet symbol */
+        .bullet::before {
+          content: "• ";
+          color: cyan;
+          font-weight: bold;
         }
       `}</style>
 
@@ -38,7 +59,6 @@ export default function Home() {
         id="home"
         className="min-h-screen w-full bg-[#141313] text-white pt-24"
       >
-        {/* MOBILE HEADING */}
         <motion.div
           className="text-center mb-8 lg:hidden"
           initial={{ opacity: 0, y: -40 }}
@@ -51,11 +71,7 @@ export default function Home() {
         </motion.div>
 
         <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-10">
-
-          {/* LEFT SIDE */}
           <motion.div className="flex-1 max-w-xl flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
-
-            {/* DESKTOP TITLE */}
             <motion.div
               className="hidden lg:block"
               initial={{ opacity: 0, x: -120 }}
@@ -70,7 +86,6 @@ export default function Home() {
               </h2>
             </motion.div>
 
-            {/* DESCRIPTION */}
             <motion.p
               className="text-base sm:text-lg text-gray-400 w-full px-3 md:px-0 md:max-w-md"
               initial={{ opacity: 0, x: 120 }}
@@ -84,7 +99,6 @@ export default function Home() {
               resilient digital environments.
             </motion.p>
 
-            {/* DESKTOP CERTIFICATION */}
             <motion.div
               className="hidden lg:block max-w-md"
               initial={{ opacity: 0, x: -120 }}
@@ -99,10 +113,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT SIDE */}
           <div className="flex-1 flex flex-col items-center max-w-md w-full">
-
-            {/* PROFILE PIC */}
             <motion.div
               className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-cyan-400 shadow-md mb-8"
               initial={{ opacity: 0, y: 60 }}
@@ -116,7 +127,6 @@ export default function Home() {
               />
             </motion.div>
 
-            {/* MOBILE SUBTITLE */}
             <motion.div
               className="lg:hidden text-center mb-6"
               initial={{ opacity: 0, x: -120 }}
@@ -128,43 +138,51 @@ export default function Home() {
               </h2>
             </motion.div>
 
-            {/* EXPERTISE SECTION — BG REMOVED + BORDER REMOVED */}
+            {/* EXPERTISE SECTION */}
             <motion.div
-              className="
-                w-full 
-                rounded-lg 
-                p-3 sm:p-5    
-                text-center 
-              "
+              className="w-full rounded-lg p-3 sm:p-5 text-center"
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-cyan-400 text-lg sm:text-xl font-bold mb-3 sm:mb-4">
+              <h3 className="text-cyan-400 text-lg sm:text-xl font-bold">
                 My Expertise
               </h3>
 
-              <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4 text-white font-semibold text-[10px] sm:text-sm">
-                {skills.map((skill, i) => (
-                  <motion.li
-                    key={skill}
-                    className="rounded-md py-1 sm:py-2 border border-cyan-400/30 bg-[#1c1c1c]"
-                    initial={{ opacity: 0, x: i % 2 === 0 ? -80 : 80 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 200,
-                      damping: 8,
-                      delay: i * 0.02,
-                    }}
-                  >
-                    {skill}
-                  </motion.li>
-                ))}
-              </ul>
+              {/* Shared 2-column grid for all screens */}
+              <div className="mobile-skill-grid mt-4 sm:mt-6">
+                <ul className="flex flex-col gap-3 text-white font-semibold text-sm sm:text-base">
+                  {skills.slice(0, Math.ceil(skills.length / 2)).map((skill, i) => (
+                    <motion.li
+                      key={skill}
+                      className="bullet"
+                      initial={{ opacity: 0, x: -80 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.03 }}
+                    >
+                      {skill}
+                    </motion.li>
+                  ))}
+                </ul>
+
+                <div className="divider" />
+
+                <ul className="flex flex-col gap-3 text-white font-semibold text-sm sm:text-base">
+                  {skills.slice(Math.ceil(skills.length / 2)).map((skill, i) => (
+                    <motion.li
+                      key={skill}
+                      className="bullet"
+                      initial={{ opacity: 0, x: 80 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.03 }}
+                    >
+                      {skill}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
 
-            {/* MOBILE CERTIFICATION BUTTON */}
             <motion.div
               className="mt-6 lg:hidden w-full max-w-md text-center"
               initial={{ opacity: 0, x: 120 }}
@@ -175,13 +193,11 @@ export default function Home() {
                 I’m a Certified developer from Illinois Institute of Technology,
                 Chicago, USA.
               </p>
-
               <CertificationButton mobile />
             </motion.div>
           </div>
         </div>
 
-        {/* SECTIONS */}
         <Projects />
         <About />
         <Contact />
@@ -198,37 +214,21 @@ function CertificationButton({ mobile }) {
       target="_blank"
       rel="noopener noreferrer"
       className={`
-        inline-flex items-center gap-3 
-        ${mobile ? "px-6 py-3" : "px-10 py-4"} 
+        inline-flex items-center gap-3
+        ${mobile ? "px-6 py-3" : "px-10 py-4"}
         bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600
-        text-black font-semibold rounded-lg shadow-md 
-        relative overflow-hidden cursor-pointer select-none
+        text-black font-semibold rounded-lg shadow-md relative overflow-hidden
       `}
-      style={{ borderRadius: "10px" }}
       whileHover={{ scale: 1.07 }}
       whileTap={{ scale: 0.95 }}
     >
-      {/* Shine effect */}
-      <motion.div
-        className="absolute top-0 left-[-100%] w-20 h-full 
-                   bg-gradient-to-r from-transparent via-white/40 to-transparent"
-        style={{ filter: "blur(8px)" }}
-        animate={{ x: ["-100%", "150%"] }}
-        transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-      />
-
       <motion.img
         src="/OIP.jpg"
         alt="University Logo"
         className="rounded-md shadow-md relative z-10"
         style={{ width: mobile ? 35 : 50, height: mobile ? 35 : 50 }}
       />
-
-      <motion.span
-        className={`relative z-10 ${
-          mobile ? "text-base" : "text-xl"
-        } font-semibold`}
-      >
+      <motion.span className={`relative z-10 ${mobile ? "text-base" : "text-xl"}`}>
         View My Certification
       </motion.span>
     </motion.a>
