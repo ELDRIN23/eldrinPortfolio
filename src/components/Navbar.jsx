@@ -13,14 +13,14 @@ export default function Navbar() {
     { path: "/", label: "Home" },
     { path: "#project", label: "Projects" },
     { path: "#about", label: "About" },
-    { path: "#contact", label: "Connect" },
     { path: "#ContactForm", label: "Contact" },
+    { path: "#contact", label: "Connect" },
   ];
 
   return (
     <motion.nav
       className="w-full flex justify-center
-                 mt-25 lg:mt-12 mb-4 lg:mb-12 px-2"  // mobile: more top spacing
+                 mt-25 lg:mt-12 mb-4 lg:mb-12 px-2" // mobile: more top spacing
       initial={{ x: -200, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
@@ -43,9 +43,10 @@ export default function Navbar() {
                       text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-lg
                       tracking-wide
                       px-2 sm:px-3 md:px-4 py-2
-                      ${isActive 
-                        ? "text-cyan-400" 
-                        : "text-gray-400 hover:text-white"
+                      ${
+                        isActive
+                          ? "text-cyan-400"
+                          : "text-gray-400 hover:text-white"
                       }`}
                     style={
                       isActive

@@ -6,7 +6,6 @@ export default function Projects() {
   const [todoLiveClicked, setTodoLiveClicked] = useState(false);
   const toggleTodoLive = () => setTodoLiveClicked((prev) => !prev);
 
-  // Animation variants
   const cardVariants = {
     left: {
       hidden: { opacity: 0, x: -80 },
@@ -18,7 +17,6 @@ export default function Projects() {
     },
   };
 
-  // Card Data
   const projects = [
     {
       title: "Food Delivery Website",
@@ -32,7 +30,7 @@ export default function Projects() {
       img: "/eldrinTodo.png",
       live: "https://eldrintodo.vercel.app/",
     },
-      {
+    {
       title: "Midnight23",
       desc: "My favourite music collections named midnight23 built using React, styled with TailwindCSS and DaisyUI.",
       img: "/musicapp.png",
@@ -77,7 +75,10 @@ export default function Projects() {
   ];
 
   return (
-    <div id="project" className="min-h-screen p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex flex-col items-center justify-center space-y-16">
+    <div
+      id="project"
+      className="min-h-screen p-8 bg-[#141313] text-gray-100 flex flex-col items-center justify-center space-y-16"
+    >
       {/* Heading */}
       <motion.h1
         className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 bg-clip-text text-transparent drop-shadow-lg"
@@ -97,9 +98,9 @@ export default function Projects() {
           return (
             <motion.div
               key={i}
-              className={`bg-gradient-to-tr from-gray-900 to-gray-800 rounded-2xl overflow-hidden shadow-xl 
+              className={`bg-[#1c1c1c] rounded-2xl overflow-hidden shadow-xl 
                 ${proj.locked ? "border-2 border-cyan-600 cursor-not-allowed" : "border border-cyan-700 cursor-pointer"} 
-              relative`}
+                relative transition-all duration-300`}
               variants={cardVariants[variant]}
               initial="hidden"
               whileInView="visible"
@@ -117,14 +118,12 @@ export default function Projects() {
                 className="w-full h-48 object-cover"
               />
 
-              {/* Locked Overlay */}
               {proj.locked && (
                 <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-10 pointer-events-none">
                   <LockClosedIcon className="w-16 h-16 text-cyan-400 opacity-80 animate-pulse" />
                 </div>
               )}
 
-              {/* Card Content */}
               <div className="p-6 relative z-20">
                 <h2 className="text-2xl font-semibold text-cyan-300 mb-3 tracking-wide">
                   {proj.title}
@@ -137,7 +136,6 @@ export default function Projects() {
                   {proj.desc}
                 </p>
 
-                {/* Action Buttons */}
                 <div className="flex flex-wrap gap-3 mt-5">
                   {proj.live && (
                     <a
@@ -148,29 +146,6 @@ export default function Projects() {
                     >
                       View Live
                     </a>
-                  )}
-
-                  {proj.button && (
-                    <>
-                      <button
-                        onClick={toggleTodoLive}
-                        className="px-6 py-2 bg-sky-500 text-white rounded-lg font-medium shadow-lg hover:bg-sky-600 transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-sky-400/50"
-                      >
-                        View Live
-                      </button>
-                      {todoLiveClicked && (
-                        <motion.p
-                          key="coming-soon"
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.5 }}
-                          className="mt-4 text-sky-400 font-semibold text-lg tracking-wide select-none"
-                        >
-                          Coming Soon
-                        </motion.p>
-                      )}
-                    </>
                   )}
 
                   {proj.more && (

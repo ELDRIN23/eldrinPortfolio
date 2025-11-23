@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import CVModal from "./CVModal";  // import the modal here
+import GithubModal from "./CVModal";
 
 export default function Layout() {
   return (
@@ -18,7 +18,7 @@ export default function Layout() {
       <Footer />
 
       {/* Modal renders here so it overlays everything */}
-      <CVModal />
+      <GithubModal />
     </div>
   );
 }

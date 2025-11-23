@@ -24,7 +24,10 @@ const skills = [
 
 export default function Home() {
   return (
-    <section id="home" className="min-h-[80vh] px-6 sm:px-12 max-w-7xl mx-auto">
+    <section
+      id="home"
+      className="min-h-screen w-full bg-[#141313] text-white pt-24"
+    >
       {/* Heading on mobile only */}
       <motion.div
         className="text-center mb-8 lg:hidden"
@@ -40,7 +43,7 @@ export default function Home() {
       <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-10">
         {/* Left Side */}
         <motion.div className="flex-1 max-w-xl flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
-          {/* Desktop heading + subtitle only */}
+          {/* Desktop heading */}
           <motion.div
             className="hidden lg:block"
             initial={{ opacity: 0, x: -120 }}
@@ -56,7 +59,7 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          {/* About text */}
+          {/* Description */}
           <motion.p
             className="text-base sm:text-lg text-gray-400 max-w-md"
             initial={{ opacity: 0, x: 120 }}
@@ -64,14 +67,14 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, type: "spring", stiffness: 150 }}
           >
-            I specialize in developing high-quality web applications using
-            modern technologies. I excel at transforming complex challenges into
+            I specialize in developing high-quality web applications using modern
+            technologies. I excel at transforming complex challenges into
             elegant, user-friendly solutions. Additionally, I’m a cybersecurity
             enthusiast committed to ensuring secure and resilient digital
             environments.
           </motion.p>
 
-          {/* Certified text + button (desktop only) */}
+          {/* Certified text */}
           <motion.div
             className="hidden lg:block max-w-md"
             initial={{ opacity: 0, x: -120 }}
@@ -87,9 +90,9 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
-        {/* Right side (Profile + Expertise + Cert in mobile) */}
+        {/* Right Side */}
         <div className="flex-1 flex flex-col items-center max-w-md w-full">
-          {/* Profile Pic */}
+          {/* Profile Image */}
           <motion.div
             className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-cyan-400 shadow-md mb-8"
             initial={{ opacity: 0, y: 60 }}
@@ -121,23 +124,23 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          {/* Expertise Section */}
+          {/* Expertise Section — UPDATED THEME HERE */}
           <motion.div
-            className="w-full bg-[#141313] rounded-lg p-5 shadow-md text-center"
+            className="w-full bg-[#1c1c1c] rounded-lg p-5 shadow-md text-center border border-cyan-400/20"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.3 }}
           >
             <h3 className="text-cyan-400 text-lg sm:text-xl font-bold mb-4">
               My Expertise
             </h3>
+
             <ul className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-white font-semibold text-xs sm:text-sm">
               {skills.map((skill, i) => (
                 <motion.li
                   key={skill}
-                  className="bg-[#1c1c1c] rounded-md py-2 cursor-pointer select-none 
-                             transition-all duration-150 ease-in-out border border-cyan-400/30"
+                  className="bg-[#1c1c1c] rounded-md py-2 border border-cyan-400/30"
                   initial={{ x: i % 2 === 0 ? -100 : 100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   viewport={{ once: true }}
@@ -145,7 +148,7 @@ export default function Home() {
                     type: "spring",
                     stiffness: 200,
                     damping: 8,
-                    delay: i * 0.02, // very fast stagger
+                    delay: i * 0.02,
                   }}
                   whileHover={{
                     scale: 1.08,
@@ -161,7 +164,7 @@ export default function Home() {
             </ul>
           </motion.div>
 
-          {/* Certified text + button (mobile only) */}
+          {/* Mobile certification */}
           <motion.div
             className="mt-8 lg:hidden max-w-md text-center"
             initial={{ opacity: 0, x: 120 }}
@@ -178,11 +181,11 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Pages */}
       <Projects />
       <About />
-         <Contact />
+      <Contact />
       <ContactForm />
-   
     </section>
   );
 }
@@ -203,7 +206,6 @@ function CertificationButton() {
       }}
       whileTap={{ scale: 0.95 }}
     >
-      {/* Shine effect */}
       <motion.div
         className="absolute top-0 left-[-100%] w-24 h-full 
                    bg-gradient-to-r from-transparent via-white/40 to-transparent"
