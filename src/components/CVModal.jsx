@@ -59,51 +59,52 @@ export default function GithubModal() {
   if (!isOpen) return null;
 
   return (
+  <div
+    className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-label="GitHub modal"
+    onClick={handleManualClose}
+    style={{
+      pointerEvents: "auto",
+    }}
+  >
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center pointer-events-none"
-      aria-modal="true"
-      role="dialog"
-      onClick={handleManualClose}
+      ref={modalRef}
+      onClick={(e) => e.stopPropagation()}
+      className="bg-white rounded-xl shadow-xl p-5 w-[90%] max-w-[300px] text-center"
     >
-      {/* translucent background */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-
-      {/* modal content (clickable) */}
-      <div
-        ref={modalRef}
-        className="relative pointer-events-auto bg-white rounded-xl shadow-2xl p-5 text-center w-[90%] max-w-[330px]"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between">
-          <h2 className="text-lg font-bold text-gray-800">
-            ⭐ Enjoying my projects?
-          </h2>
-          <button
-            onClick={handleManualClose}
-            className="ml-2 rounded-full p-1 hover:bg-gray-100"
-          >
-            <span className="text-xl text-gray-500">×</span>
-          </button>
-        </div>
-
-        <p className="mt-3 text-sm text-gray-600">
-          Follow me on GitHub — I know you’ll find something you love!
-        </p>
-
-        <a
-          href="https://github.com/ELDRIN23"
-          target="_blank"
-          className="inline-flex items-center justify-center gap-2 w-full mt-4 py-3 px-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 text-sm font-semibold"
+      <div className="flex items-start justify-between">
+        <h2 className="text-lg font-bold text-gray-800">
+          ⭐ Enjoying my projects?
+        </h2>
+        <button
           onClick={handleManualClose}
+          aria-label="Close"
+          className="ml-2 p-1 rounded-full hover:bg-gray-100"
         >
-          <Github size={18} />
-          <span>Visit My GitHub</span>
-        </a>
-
-        <p className="text-xs text-gray-500 mt-3">
-          Closing in <span className="font-bold text-gray-800">{remainingTime}</span>s
-        </p>
+          <span className="text-xl text-gray-500">×</span>
+        </button>
       </div>
+
+      <p className="mt-3 text-sm text-gray-600">
+        Follow me on GitHub — I know you’ll find something you love!
+      </p>
+
+      <a
+        href="https://github.com/ELDRIN23"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleManualClose}
+        className="mt-4 inline-flex items-center justify-center gap-2 w-full py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 text-sm"
+      >
+        Visit My GitHub
+      </a>
+
+      <p className="text-xs text-gray-500 mt-3">
+        Closing in <span className="font-semibold">{remainingTime}</span>s
+      </p>
     </div>
+  </div>
   );
 }
