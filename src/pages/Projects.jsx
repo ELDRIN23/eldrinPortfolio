@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { LockClosedIcon } from "@heroicons/react/24/solid";
 
+
 export default function Projects() {
   const [todoLiveClicked, setTodoLiveClicked] = useState(false);
   const toggleTodoLive = () => setTodoLiveClicked((prev) => !prev);
@@ -42,7 +43,7 @@ export default function Projects() {
       img: "/novathon2.jpg",
       more: "https://eldrinjohnson.my.canva.site/novathon",
     },
-      {
+    {
       title: "THE BIG HACK",
       desc: "hackathon project with ai detection with deepfake v2 model using blockchain",
       img: "/bigHack.jpg",
@@ -75,95 +76,112 @@ export default function Projects() {
   ];
 
   return (
-    <div
-      id="project"
-      className="min-h-screen p-8 bg-[#141313] text-gray-100 flex flex-col items-center justify-center space-y-16"
-    >
-      {/* Heading */}
-      <motion.h1
-        className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 bg-clip-text text-transparent drop-shadow-lg"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
+    <>
+      <style>{`
+        /* Same grid as homepage */
+        .bg-grid {
+          background-color: #000;
+          background-image:
+            linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+          background-size: 40px 40px;
+        }
+      `}</style>
+
+      <div
+        id="project"
+        className="min-h-screen p-8 bg-grid text-gray-100 flex flex-col items-center justify-center space-y-16"
       >
-        My Projects
-      </motion.h1>
+        {/* Heading */}
+        <motion.h1
+          className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 bg-clip-text text-transparent drop-shadow-lg"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          My Projects
+        </motion.h1>
 
-      {/* Project Cards */}
-      <div className="w-full max-w-6xl grid gap-10 md:grid-cols-3">
-        {projects.map((proj, i) => {
-          const variant = i % 2 === 0 ? "left" : "right";
+        {/* Project Cards */}
+        <div className="w-full max-w-6xl grid gap-10 md:grid-cols-3">
+          {projects.map((proj, i) => {
+            const variant = i % 2 === 0 ? "left" : "right";
 
-          return (
-            <motion.div
-              key={i}
-              className={`bg-[#1c1c1c] rounded-2xl overflow-hidden shadow-xl 
-                ${proj.locked ? "border-2 border-cyan-600 cursor-not-allowed" : "border border-cyan-700 cursor-pointer"} 
+            return (
+              <motion.div
+                key={i}
+                className={`bg-[#1c1c1c] rounded-2xl overflow-hidden shadow-xl 
+                ${
+                  proj.locked
+                    ? "border-2 border-cyan-600 cursor-not-allowed"
+                    : "border border-cyan-700 cursor-pointer"
+                } 
                 relative transition-all duration-300`}
-              variants={cardVariants[variant]}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              whileHover={
-                proj.locked
-                  ? { scale: 1.02, boxShadow: "0 0 15px #06b6d4" }
-                  : { scale: 1.05, boxShadow: "0 0 20px #06b6d4" }
-              }
-            >
-              <img
-                src={proj.img}
-                alt={proj.title}
-                className="w-full h-48 object-cover"
-              />
+                variants={cardVariants[variant]}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                whileHover={
+                  proj.locked
+                    ? { scale: 1.02, boxShadow: "0 0 15px #06b6d4" }
+                    : { scale: 1.05, boxShadow: "0 0 20px #06b6d4" }
+                }
+              >
+                <img
+                  src={proj.img}
+                  alt={proj.title}
+                  className="w-full h-48 object-cover"
+                />
 
-              {proj.locked && (
-                <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-10 pointer-events-none">
-                  <LockClosedIcon className="w-16 h-16 text-cyan-400 opacity-80 animate-pulse" />
+                {proj.locked && (
+                  <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-10 pointer-events-none">
+                    <LockClosedIcon className="w-16 h-16 text-cyan-400 opacity-80 animate-pulse" />
+                  </div>
+                )}
+
+                <div className="p-6 relative z-20">
+                  <h2 className="text-2xl font-semibold text-cyan-300 mb-3 tracking-wide">
+                    {proj.title}
+                  </h2>
+                  <p
+                    className={`leading-relaxed ${
+                      proj.locked ? "text-gray-500" : "text-gray-300"
+                    }`}
+                  >
+                    {proj.desc}
+                  </p>
+
+                  <div className="flex flex-wrap gap-3 mt-5">
+                    {proj.live && (
+                      <a
+                        href={proj.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block px-6 py-2 bg-sky-500 text-white rounded-lg font-medium shadow-lg hover:bg-sky-600 transition-colors duration-300"
+                      >
+                        View Live
+                      </a>
+                    )}
+
+                    {proj.more && (
+                      <a
+                        href={proj.more}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block px-6 py-2 bg-cyan-500 text-white rounded-lg font-medium shadow-lg hover:bg-cyan-600 transition-colors duration-300"
+                      >
+                        Know More
+                      </a>
+                    )}
+                  </div>
                 </div>
-              )}
-
-              <div className="p-6 relative z-20">
-                <h2 className="text-2xl font-semibold text-cyan-300 mb-3 tracking-wide">
-                  {proj.title}
-                </h2>
-                <p
-                  className={`leading-relaxed ${
-                    proj.locked ? "text-gray-500" : "text-gray-300"
-                  }`}
-                >
-                  {proj.desc}
-                </p>
-
-                <div className="flex flex-wrap gap-3 mt-5">
-                  {proj.live && (
-                    <a
-                      href={proj.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-6 py-2 bg-sky-500 text-white rounded-lg font-medium shadow-lg hover:bg-sky-600 transition-colors duration-300"
-                    >
-                      View Live
-                    </a>
-                  )}
-
-                  {proj.more && (
-                    <a
-                      href={proj.more}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block px-6 py-2 bg-cyan-500 text-white rounded-lg font-medium shadow-lg hover:bg-cyan-600 transition-colors duration-300"
-                    >
-                      Know More
-                    </a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

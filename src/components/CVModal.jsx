@@ -40,7 +40,7 @@ export default function GithubModal() {
 
     timersRef.current.openTimer = setTimeout(() => {
       startCountdownAndOpen();
-    }, 40000);
+    }, 30000);
 
     return () => {
       clearInterval(timersRef.current.countdown);

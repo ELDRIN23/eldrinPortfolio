@@ -19,13 +19,14 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className="w-full flex justify-center px-2 mt-3 lg:mt-6 mb-2 lg:mb-4" // reduced top & bottom gap
+      className="w-full flex justify-center px-2 mt-3 lg:mt-6 mb-2 lg:mb-4"
       initial={{ x: -200, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
       style={{ y: yParallax, opacity: opacityParallax }}
     >
-      <div className="bg-[#141313] rounded-2xl px-2 sm:px-6 md:px-10 py-3 sm:py-3 md:py-4 shadow-md w-full max-w-4xl">
+      {/* CHANGED TO PURE BLACK */}
+      <div className="bg-black rounded-2xl px-2 sm:px-6 md:px-10 py-3 sm:py-3 md:py-4 shadow-md w-full max-w-4xl">
         <ul className="flex justify-between md:justify-center items-center gap-2 sm:gap-6 md:gap-10">
           {links.map((link) => {
             const isActive = location.pathname === link.path;

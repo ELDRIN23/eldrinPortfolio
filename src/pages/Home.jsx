@@ -3,6 +3,7 @@ import Projects from "./Projects";
 import About from "./About";
 import Contact from "./Contact";
 import ContactForm from "./ConnectMe";
+"use client";
 
 const skills = [
   "JavaScript",
@@ -32,6 +33,15 @@ export default function Home() {
           height: 100%;
         }
 
+        /* Grid background EXACTLY like the uploaded image */
+        .bg-grid {
+          background-color: #000;
+          background-image:
+            linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+          background-size: 40px 40px;
+        }
+
         /* Vertical divider for grid */
         .mobile-skill-grid {
           display: grid;
@@ -57,7 +67,7 @@ export default function Home() {
 
       <section
         id="home"
-        className="min-h-screen w-full bg-[#141313] text-white pt-24"
+        className="min-h-screen w-full bg-grid text-white pt-24 relative"
       >
         <motion.div
           className="text-center mb-8 lg:hidden"
@@ -81,6 +91,7 @@ export default function Home() {
               <h1 className="text-6xl font-bold">
                 Hi, I’m <span className="text-cyan-400">Eldrin Johnson</span>
               </h1>
+
               <h2 className="text-3xl mt-3 text-gray-300 font-semibold">
                 I’m a Full Stack Developer & Cybersecurity Enthusiast
               </h2>
@@ -149,36 +160,40 @@ export default function Home() {
                 My Expertise
               </h3>
 
-              {/* Shared 2-column grid for all screens */}
+              {/* Shared 2-column grid */}
               <div className="mobile-skill-grid mt-4 sm:mt-6">
                 <ul className="flex flex-col gap-3 text-white font-semibold text-sm sm:text-base">
-                  {skills.slice(0, Math.ceil(skills.length / 2)).map((skill, i) => (
-                    <motion.li
-                      key={skill}
-                      className="bullet"
-                      initial={{ opacity: 0, x: -80 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.03 }}
-                    >
-                      {skill}
-                    </motion.li>
-                  ))}
+                  {skills
+                    .slice(0, Math.ceil(skills.length / 2))
+                    .map((skill, i) => (
+                      <motion.li
+                        key={skill}
+                        className="bullet"
+                        initial={{ opacity: 0, x: -80 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.03 }}
+                      >
+                        {skill}
+                      </motion.li>
+                    ))}
                 </ul>
 
                 <div className="divider" />
 
                 <ul className="flex flex-col gap-3 text-white font-semibold text-sm sm:text-base">
-                  {skills.slice(Math.ceil(skills.length / 2)).map((skill, i) => (
-                    <motion.li
-                      key={skill}
-                      className="bullet"
-                      initial={{ opacity: 0, x: 80 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.03 }}
-                    >
-                      {skill}
-                    </motion.li>
-                  ))}
+                  {skills
+                    .slice(Math.ceil(skills.length / 2))
+                    .map((skill, i) => (
+                      <motion.li
+                        key={skill}
+                        className="bullet"
+                        initial={{ opacity: 0, x: 80 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.03 }}
+                      >
+                        {skill}
+                      </motion.li>
+                    ))}
                 </ul>
               </div>
             </motion.div>
