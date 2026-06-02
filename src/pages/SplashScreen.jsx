@@ -47,11 +47,11 @@ export default function SplashScreen() {
       <style>{`
         /* SAME GRID BG AS ALL PAGES */
         .bg-grid {
-          background-color: #000;
+          background-color: #0a0a0c;
           background-image:
-            linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-          background-size: 40px 40px;
+            linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+          background-size: 32px 32px;
         }
       `}</style>
 
@@ -59,14 +59,14 @@ export default function SplashScreen() {
 
         {/* Infinity loader */}
         <motion.span
-          className="loading loading-infinity loading-xl text-cyan-400 mb-6"
+          className="loading loading-infinity loading-xl text-purple-500 mb-6"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.8, 1, 0.8],
             textShadow: [
-              "0 0 8px rgba(14, 165, 233, 0.7)",
-              "0 0 16px rgba(14, 165, 233, 1)",
-              "0 0 8px rgba(14, 165, 233, 0.7)",
+              "0 0 8px rgba(139, 92, 246, 0.7)",
+              "0 0 16px rgba(139, 92, 246, 1)",
+              "0 0 8px rgba(139, 92, 246, 0.7)",
             ],
           }}
           transition={{
@@ -83,7 +83,7 @@ export default function SplashScreen() {
           transition={{ duration: 2, ease: "easeOut" }}
           className="text-center max-w-md"
         >
-          <h1 className="text-6xl font-extrabold text-cyan-400 mb-4 drop-shadow-lg">
+          <h1 className="text-6xl font-extrabold text-purple-500 mb-4 drop-shadow-lg">
             Eldrin Johnson
           </h1>
 

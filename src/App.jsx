@@ -7,12 +7,13 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import ContactForm from "./pages/ConnectMe";
+import Business from "./pages/Business";
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSplash(false), 3000); // 3 seconds splash
+    const timer = setTimeout(() => setShowSplash(false), 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="projects" element={<Projects />} />
         <Route path="contact" element={<Contact />} />
         <Route path="ContactForm" element={<ContactForm />} />
+        <Route path="business" element={<Business />} />
       </Route>
     </Routes>
   );

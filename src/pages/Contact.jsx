@@ -21,8 +21,25 @@ export default function Contact() {
     offset: ["0 1", "1.2 1"],
   });
 
-  const yHeading = useTransform(scrollYProgress, [0, 1], [50, 0]);
+  const yHeading = useTransform(scrollYProgress, [0, 1], [30, 0]);
   const opacityHeading = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.215, 0.61, 0.355, 1] },
+    },
+  };
 
   const socialLinks = [
     {
@@ -108,115 +125,113 @@ export default function Contact() {
   ];
 
   const statusColors = {
-    "Super Active": "text-green-500",
-    Active: "text-cyan-400",
-    "Occasionally Active": "text-yellow-400",
-    Inactive: "text-gray-400",
+    "Super Active": "text-green-400",
+    Active: "text-purple-400",
+    "Occasionally Active": "text-amber-400",
+    Inactive: "text-gray-500",
   };
 
   return (
     <>
       <style>{`
-        /* SAME GRID BACKGROUND AS ALL OTHER SECTIONS */
         .bg-grid {
-          background-color: #000;
+          background-color: #0b0b0b;
           background-image:
-            linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
           background-size: 40px 40px;
         }
       `}</style>
 
       <div
-        id="ContactForm"
+        id="contact"
         ref={ref}
-        className="min-h-screen bg-grid flex flex-col items-center justify-start py-12 px-4 sm:px-6 md:px-12 gap-8 overflow-hidden"
+        className="min-h-screen bg-grid flex flex-col items-center justify-start py-16 px-4 sm:px-6 md:px-12 gap-8 overflow-hidden font-sans"
       >
-        {/* Hire Me Button */}
+        {/* Hire Me Action Trigger Button */}
         <motion.a
           href="mailto:eldrinjohnson77@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-7 py-4 bg-cyan-400 text-black font-bold rounded-full shadow-lg hover:bg-cyan-500 transition-colors mb-6"
-          animate={{ x: [0, -5, 5, -5, 5, 0] }}
-          transition={{ repeat: Infinity, duration: 1 }}
+          className="inline-flex items-center gap-3 px-8 py-4 bg-purple-600 text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-lg transition-colors mb-4 hover:bg-purple-700"
+          whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(168, 85, 247, 0.4)" }}
+          whileTap={{ scale: 0.98 }}
         >
-          <MdMail size={24} />
+          <MdMail size={18} />
           Hire Me
         </motion.a>
 
-        {/* Heading */}
-        <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-cyan-400 text-center"
-          initial={{ opacity: 0, x: 100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          Connect With Me
-        </motion.h1>
+        {/* Section Heading Row */}
+        <div className="text-center space-y-3">
+          <motion.h1
+            className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Connect With <span className="text-purple-500">Me</span>
+          </motion.h1>
 
-        {/* Intro */}
-        <motion.p
-          style={{ y: yHeading, opacity: opacityHeading }}
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          viewport={{ once: true }}
-          className="max-w-lg sm:max-w-xl text-center mb-6 text-gray-300 text-base sm:text-lg"
-        >
-          I’m open to new projects, opportunities, or collaborations. Reach out
-          through any of the platforms below.
-        </motion.p>
-
-        {/* Social Links */}
-        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 w-full max-w-4xl">
-          {socialLinks.map(
-            ({ href, Icon, label, username, description, status }, i) => (
-              <motion.div
-                key={label}
-                initial={{
-                  opacity: 0,
-                  x: i % 2 === 0 ? -100 : 100,
-                  y: i % 2 === 0 ? -50 : 50,
-                }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  ease: "easeOut",
-                  delay: i * 0.1,
-                }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05, rotate: i % 2 === 0 ? -1 : 1 }}
-                className="flex flex-col items-center p-5 border border-gray-500 rounded-xl bg-[#1c1c1c] w-full sm:w-[300px] hover:border-cyan-400 transition-colors shadow-lg"
-              >
-                <div className="bg-gray-100 p-4 rounded-full flex items-center justify-center w-16 h-16 mb-4">
-                  <Icon size={28} className="text-black" />
-                </div>
-                <div className="flex flex-col text-left mb-4 flex-1 w-full">
-                  <p className="font-bold text-white text-lg">{label}</p>
-                  <p className="text-gray-400 text-sm">{username}</p>
-                  <p className="text-gray-300 text-sm">• {description}</p>
-                  <p
-                    className={`text-xs mt-1 font-semibold ${statusColors[status]}`}
-                  >
-                    {status}
-                  </p>
-                </div>
-
-                {/* View Button */}
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 bg-cyan-400 text-black font-semibold rounded-full hover:bg-cyan-500 transition-colors w-full text-center"
-                >
-                  View
-                </a>
-              </motion.div>
-            )
-          )}
+          {/* Subtext description message layer */}
+          <motion.p
+            style={{ y: yHeading, opacity: opacityHeading }}
+            className="max-w-lg sm:max-w-xl mx-auto text-gray-400 text-base sm:text-lg font-light leading-relaxed"
+          >
+            I’m open to new projects, opportunities, or collaborations. Reach out through any of the platforms below.
+          </motion.p>
         </div>
+
+        {/* Social Grid Container */}
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl mt-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
+        >
+          {socialLinks.map(({ href, Icon, label, username, description, status }) => (
+            <motion.div
+              key={label}
+              variants={itemVariants}
+              whileHover={{ 
+                scale: 1.03, 
+                borderColor: "rgba(168, 85, 247, 0.4)",
+                boxShadow: "0 10px 25px rgba(168, 85, 247, 0.15)"
+              }}
+              className="flex flex-col items-stretch p-6 border border-zinc-800 rounded-3xl bg-[#232323] transition-colors relative group"
+            >
+       
+
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3.5 rounded-2xl bg-[#18181b] border border-zinc-800 flex items-center justify-center text-purple-500 group-hover:text-white group-hover:bg-purple-600 transition-all duration-300">
+                  <Icon size={24} />
+                </div>
+                <div className="flex flex-col">
+                  <p className="font-bold text-white text-lg tracking-wide">{label}</p>
+                  <p className="text-gray-500 text-xs font-mono">{username}</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col text-left mb-6 flex-grow justify-between">
+                <p className="text-gray-400 text-sm font-light leading-relaxed">{description}</p>
+                <p className={`text-xs mt-2 font-semibold tracking-wider uppercase ${statusColors[status]}`}>
+                  {status}
+                </p>
+              </div>
+
+              {/* Redirection Link trigger element */}
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 bg-zinc-800 text-gray-200 hover:text-white hover:bg-purple-600 font-bold text-xs uppercase tracking-wider rounded-xl transition-all text-center"
+              >
+                View Profile
+              </a>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </>
   );

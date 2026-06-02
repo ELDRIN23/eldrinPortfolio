@@ -2,19 +2,28 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { LockClosedIcon } from "@heroicons/react/24/solid";
 
-
 export default function Projects() {
   const [todoLiveClicked, setTodoLiveClicked] = useState(false);
   const toggleTodoLive = () => setTodoLiveClicked((prev) => !prev);
 
-  const cardVariants = {
-    left: {
-      hidden: { opacity: 0, x: -80 },
-      visible: { opacity: 1, x: 0 },
+  // Modern container variant to stagger sequential card items smoothly
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15, // Smooth sequence delays
+      },
     },
-    right: {
-      hidden: { opacity: 0, x: 80 },
-      visible: { opacity: 1, x: 0 },
+  };
+
+  // Modern upward float animation variant
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] } // Custom cubic-bezier for premium feel
     },
   };
 
@@ -78,109 +87,120 @@ export default function Projects() {
   return (
     <>
       <style>{`
-        /* Same grid as homepage */
         .bg-grid {
-          background-color: #000;
+          background-color: #0b0b0b;
           background-image:
-            linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
           background-size: 40px 40px;
         }
       `}</style>
 
       <div
         id="project"
-        className="min-h-screen p-8 bg-grid text-gray-100 flex flex-col items-center justify-center space-y-16"
+        className="min-h-screen p-8 bg-grid text-gray-100 flex flex-col items-center justify-center space-y-16 font-sans overflow-x-hidden"
       >
-        {/* Heading */}
-        <motion.h1
-          className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-500 bg-clip-text text-transparent drop-shadow-lg"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
+        {/* Main Heading Scroll Animation */}
+        <div className="text-center">
+          <motion.h1
+            className="text-5xl md:text-6xl font-extrabold text-white tracking-tight"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            My <span className="text-purple-500">Projects</span>
+          </motion.h1>
+        </div>
+
+        {/* Project Cards Grid with Motion Container Wrapper */}
+        <motion.div 
+          className="w-full max-w-6xl grid gap-10 md:grid-cols-3"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }} // Triggers smoothly when entry begins
         >
-          My Projects
-        </motion.h1>
-
-        {/* Project Cards */}
-        <div className="w-full max-w-6xl grid gap-10 md:grid-cols-3">
           {projects.map((proj, i) => {
-            const variant = i % 2 === 0 ? "left" : "right";
-
             return (
               <motion.div
                 key={i}
-                className={`bg-[#1c1c1c] rounded-2xl overflow-hidden shadow-xl 
-                ${
-                  proj.locked
-                    ? "border-2 border-cyan-600 cursor-not-allowed"
-                    : "border border-cyan-700 cursor-pointer"
-                } 
-                relative transition-all duration-300`}
-                variants={cardVariants[variant]}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                className={`bg-[#232323] rounded-3xl overflow-hidden shadow-2xl transition-all flex flex-col relative ${
+                  proj.locked ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+                }`}
+                variants={cardVariants}
                 whileHover={
                   proj.locked
-                    ? { scale: 1.02, boxShadow: "0 0 15px #06b6d4" }
-                    : { scale: 1.05, boxShadow: "0 0 20px #06b6d4" }
+                    ? { scale: 1 }
+                    : { 
+                        scale: 1.04, 
+                        boxShadow: "0 15px 35px rgba(168, 85, 247, 0.25)",
+                        transition: { duration: 0.3, ease: "easeOut" }
+                      }
                 }
               >
-                <img
-                  src={proj.img}
-                  alt={proj.title}
-                  className="w-full h-48 object-cover"
-                />
+                {/* Image Container Area */}
+                <div className="relative w-full h-48 overflow-hidden">
+                  <img
+                    src={proj.img}
+                    alt={proj.title}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
+                  />
+                  
+                  {/* Visual assets layered matching style themes */}
+                  {/* <span className="absolute top-3 left-4 text-white font-bold text-lg drop-shadow-md select-none">✦</span>
+                  <span className="absolute bottom-3 right-4 text-white text-xs opacity-75 drop-shadow-md select-none">©2026</span> */}
+                </div>
 
+                {/* Secure Lock Layer overlay */}
                 {proj.locked && (
-                  <div className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-10 pointer-events-none">
-                    <LockClosedIcon className="w-16 h-16 text-cyan-400 opacity-80 animate-pulse" />
+                  <div className="absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center z-30 rounded-3xl">
+                    <LockClosedIcon className="w-14 h-14 text-purple-500 animate-pulse" />
                   </div>
                 )}
 
-                <div className="p-6 relative z-20">
-                  <h2 className="text-2xl font-semibold text-cyan-300 mb-3 tracking-wide">
-                    {proj.title}
-                  </h2>
-                  <p
-                    className={`leading-relaxed ${
-                      proj.locked ? "text-gray-500" : "text-gray-300"
-                    }`}
-                  >
-                    {proj.desc}
-                  </p>
-
-                  <div className="flex flex-wrap gap-3 mt-5">
-                    {proj.live && (
-                      <a
-                        href={proj.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block px-6 py-2 bg-sky-500 text-white rounded-lg font-medium shadow-lg hover:bg-sky-600 transition-colors duration-300"
-                      >
-                        View Live
-                      </a>
-                    )}
-
-                    {proj.more && (
-                      <a
-                        href={proj.more}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block px-6 py-2 bg-cyan-500 text-white rounded-lg font-medium shadow-lg hover:bg-cyan-600 transition-colors duration-300"
-                      >
-                        Know More
-                      </a>
-                    )}
+                {/* Description Text Layer info block */}
+                <div className="p-6 flex flex-col flex-grow justify-between relative z-20">
+                  <div>
+                    <h3 className="text-2xl font-bold text-purple-500 mb-2 tracking-wide">
+                      {proj.title}
+                    </h3>
+                    <p className="text-sm text-gray-400 leading-relaxed font-light">
+                      {proj.desc}
+                    </p>
                   </div>
+
+                  {/* Actions Link elements layout handles */}
+                  {!proj.locked && (proj.live || proj.more) && (
+                    <div className="flex flex-wrap gap-3 mt-6">
+                      {proj.live && (
+                        <a
+                          href={proj.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 text-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors duration-300 shadow-md"
+                        >
+                          View Live
+                        </a>
+                      )}
+
+                      {proj.more && (
+                        <a
+                          href={proj.more}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 text-center px-4 py-2 bg-zinc-700 hover:bg-zinc-600 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors duration-300"
+                        >
+                          Know More
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </>
   );

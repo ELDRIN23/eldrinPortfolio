@@ -24,14 +24,14 @@ export default function Footer() {
       </aside>
 
       {/* Exclamation Button */}
-      <div className="absolute bottom-3 right-3">
+      {/* <div className="absolute bottom-3 right-3">
         <button
           onClick={() => setOpen(true)}
           className="w-6 h-6 flex items-center justify-center rounded-full bg-cyan-500 text-white text-xs font-bold hover:bg-cyan-600 transition"
         >
           !
         </button>
-      </div>
+      </div> */}
 
       {/* MODAL INSIDE UI (slightly shifted up) */}
       {open && (
