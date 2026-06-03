@@ -54,6 +54,7 @@ export default function Projects() {
     },
     {
       title: "THE BIG HACK",
+      
       desc: "hackathon project with ai detection with deepfake v2 model using blockchain",
       img: "/bigHack.jpg",
       more: "https://eldrinjohnson.my.canva.site/the-big-hack",
