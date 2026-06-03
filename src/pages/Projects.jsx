@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { LockClosedIcon } from "@heroicons/react/24/solid";
+import { MacbookScroll } from "../components/ui/macbook-scroll";
 
 export default function Projects() {
   const [todoLiveClicked, setTodoLiveClicked] = useState(false);
@@ -20,10 +21,10 @@ export default function Projects() {
   // Modern upward float animation variant
   const cardVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] } // Custom cubic-bezier for premium feel
+      transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }, // Custom cubic-bezier for premium feel
     },
   };
 
@@ -54,7 +55,7 @@ export default function Projects() {
     },
     {
       title: "THE BIG HACK",
-      
+
       desc: "hackathon project with ai detection with deepfake v2 model using blockchain",
       img: "/bigHack.jpg",
       more: "https://eldrinjohnson.my.canva.site/the-big-hack",
@@ -97,6 +98,18 @@ export default function Projects() {
         }
       `}</style>
 
+{/* macbook scroll animation */}
+      <div className="hidden lg:block">
+        <MacbookScroll
+          src="/image.png"
+          title={
+            <span>
+              #thebestthingsnevercomeeasy<br></br>
+            </span>
+          }
+        />
+      </div>
+
       <div
         id="project"
         className="min-h-screen p-8 bg-grid text-gray-100 flex flex-col items-center justify-center space-y-16 font-sans overflow-x-hidden"
@@ -115,7 +128,7 @@ export default function Projects() {
         </div>
 
         {/* Project Cards Grid with Motion Container Wrapper */}
-        <motion.div 
+        <motion.div
           className="w-full max-w-6xl grid gap-10 md:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
@@ -127,16 +140,18 @@ export default function Projects() {
               <motion.div
                 key={i}
                 className={`bg-[#232323] rounded-3xl overflow-hidden shadow-2xl transition-all flex flex-col relative ${
-                  proj.locked ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+                  proj.locked
+                    ? "opacity-60 cursor-not-allowed"
+                    : "cursor-pointer"
                 }`}
                 variants={cardVariants}
                 whileHover={
                   proj.locked
                     ? { scale: 1 }
-                    : { 
-                        scale: 1.04, 
+                    : {
+                        scale: 1.04,
                         boxShadow: "0 15px 35px rgba(168, 85, 247, 0.25)",
-                        transition: { duration: 0.3, ease: "easeOut" }
+                        transition: { duration: 0.3, ease: "easeOut" },
                       }
                 }
               >
@@ -147,7 +162,7 @@ export default function Projects() {
                     alt={proj.title}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
                   />
-                  
+
                   {/* Visual assets layered matching style themes */}
                   {/* <span className="absolute top-3 left-4 text-white font-bold text-lg drop-shadow-md select-none">✦</span>
                   <span className="absolute bottom-3 right-4 text-white text-xs opacity-75 drop-shadow-md select-none">©2026</span> */}
