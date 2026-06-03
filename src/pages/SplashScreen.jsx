@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { EncryptedText } from "../components/ui/encrypted-text";
 
 export default function SplashScreen() {
   useEffect(() => {
@@ -70,27 +71,39 @@ export default function SplashScreen() {
             ],
           }}
           transition={{
-            duration: 1.5,
+            duration: 2,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         ></motion.span>
 
-        {/* Centered Text Only */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-          className="text-center max-w-md"
-        >
-          <h1 className="text-6xl font-extrabold text-purple-500 mb-4 drop-shadow-lg">
-            Eldrin Johnson
-          </h1>
+    {/* Centered Text Only */}
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 2, ease: "easeOut" }}
+  className="text-center max-w-4xl"
+>
+  <div className="flex flex-col items-center gap-4">
+    <EncryptedText
+      text="Eldrin Johnson"
+      className="text-6xl font-extrabold text-purple-500 drop-shadow-lg"
+      revealDelayMs={70}
+      flipDelayMs={20}
+      encryptedClassName="text-purple-400"
+      revealedClassName="text-purple-500"
+    />
 
-          <p className="text-xl italic">
-            Full Stack Developer & Cybersecurity Enthusiast
-          </p>
-        </motion.div>
+    <EncryptedText
+      text="Full Stack Developer & Cybersecurity Enthusiast"
+      className="text-xl italic text-center"
+      revealDelayMs={35}
+      flipDelayMs={15}
+      encryptedClassName="text-gray-500"
+      revealedClassName="text-gray-300"
+    />
+  </div>
+</motion.div>
       </div>
     </>
   );
