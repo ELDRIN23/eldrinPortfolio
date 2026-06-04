@@ -68,7 +68,7 @@ export default function Home() {
         {/* STICKY BOTTOM-RIGHT CORNER NAVIGATION */}
         <div className="fixed bottom-6 right-6 z-[99999] flex flex-col gap-3">
           <Link
-            to="/business"
+            to="/Business"
             className="bg-[#8b5cf6] text-white font-bold py-2.5 px-7 rounded-xl text-sm hover:bg-[#7c3aed] transition-colors shadow-lg text-center"
           >
             View Business

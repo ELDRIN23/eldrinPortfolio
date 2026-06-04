@@ -7,6 +7,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import ContactForm from "./pages/ConnectMe";
+import Business from "./pages/Business";
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="projects" element={<Projects />} />
         <Route path="contact" element={<Contact />} />
         <Route path="ContactForm" element={<ContactForm />} />
+        <Route path="Business" element={<Business />} />
       </Route>
     </Routes>
   );
