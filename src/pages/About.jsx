@@ -60,7 +60,7 @@ export default function About() {
           />
 
           {/* MacBook Animation */}
-          <div className="relative z-0 mt-10">
+          <div className="relative z-0 mt-8">
             <MacbookScroll
               src="/certificate.jpg"
               title={<span>#thebestthingsnevercomeeasy</span>}
