@@ -33,7 +33,13 @@ export default function Projects() {
       title: "Food Delivery Website",
       desc: "A MERN stack web app with JWT authentication, payment gateway integration, and fully responsive design.",
       img: "/foodDelivery.png",
-      live: "https://food-delivery-frontend-omega.vercel.app/",
+      live: "https://foodie88.vercel.app/",
+    },
+    {
+      title: "surplus food website",
+      desc: "build in MERN, with admin, user, resturant owner panels.",
+      img: "/surplus.png",
+      live: "https://eldrin23.github.io/entri/",
     },
     {
       title: "Todo App",
@@ -64,14 +70,9 @@ export default function Projects() {
       title: "Portfolio Web",
       desc: "My portfolio website built using React, styled with TailwindCSS and DaisyUI, using React Router and Framer Motion animations.",
       img: "/portfolio.png",
-      live: "https://eldrin23.vercel.app/",
+      live: "https://eldrin.is-a.dev/",
     },
-    {
-      title: "E-commerce Website",
-      desc: "A responsive e-commerce website built with HTML, CSS, and Bootstrap with a carousel and product listing.",
-      img: "/ecom.png",
-      live: "https://eldrin23.github.io/entri/",
-    },
+
     {
       title: "Course Selling Website",
       desc: "A platform for selling online courses with secure payments and user dashboard. Under professional development (Coming soon).",
@@ -98,7 +99,7 @@ export default function Projects() {
         }
       `}</style>
 
-{/* macbook scroll animation */}
+      {/* macbook scroll animation */}
       <div className="hidden lg:block">
         <MacbookScroll
           src="/image.png"
