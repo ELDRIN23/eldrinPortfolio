@@ -55,13 +55,13 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="flex min-h-[200vh] shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80">
+     className="flex min-h-[70vh] md:min-h-[140vh] shrink-0 scale-[0.45] transform flex-col items-center justify-start pt-16 md:pt-0 [perspective:800px] sm:scale-[0.6] md:scale-[0.85] md:py-40">
       <motion.h2
         style={{
           translateY: textTransform,
           opacity: textOpacity,
         }}
-        className="mb-20 text-center text-3xl font-bold text-neutral-800 dark:text-white">
+        className="mb-6 md:mb-20 text-center text-2xl md:text-3xl font-bold text-neutral-800 dark:text-white">
         {title || (
           <span>
             This Macbook is built with Tailwindcss. <br /> No kidding.
@@ -121,7 +121,7 @@ export const Lid = ({
           transformOrigin: "bottom",
           transformStyle: "preserve-3d",
         }}
-        className="relative h-[12rem] w-[32rem] rounded-2xl bg-[#010101] p-2">
+        className="relative h-[10rem] w-[28rem] rounded-2xl bg-[#010101] p-2">
         <div
           style={{
             boxShadow: "0px 2px 0px 2px #171717 inset",
@@ -141,7 +141,7 @@ export const Lid = ({
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
-        className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2">
+        className="absolute inset-0 h-80 w-[28rem] rounded-2xl bg-[#010101] p-2">
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
         <img
           src={src}

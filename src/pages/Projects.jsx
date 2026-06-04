@@ -100,9 +100,9 @@ export default function Projects() {
       `}</style>
 
       {/* macbook scroll animation */}
-      <div className="hidden lg:block">
+      <div className="relative z-0">
         <MacbookScroll
-          src="/image.png"
+          src="/certificate.jpg"
           title={
             <span>
               #thebestthingsnevercomeeasy<br></br>
@@ -110,10 +110,9 @@ export default function Projects() {
           }
         />
       </div>
-
       <div
         id="project"
-        className="min-h-screen p-8 bg-grid text-gray-100 flex flex-col items-center justify-center space-y-16 font-sans overflow-x-hidden"
+        className="relative z-50 min-h-screen p-8 bg-grid text-gray-100 flex flex-col items-center justify-center space-y-16 font-sans overflow-x-hidden"
       >
         {/* Main Heading Scroll Animation */}
         <div className="text-center">
