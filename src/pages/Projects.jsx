@@ -39,7 +39,7 @@ export default function Projects() {
       title: "surplus food website",
       desc: "build in MERN, with admin, user, resturant owner panels.",
       img: "/surplus.png",
-      live: "https://eldrin23.github.io/entri/",
+      live: "https://surpluz.vercel.app/",
     },
     {
       title: "Todo App",
