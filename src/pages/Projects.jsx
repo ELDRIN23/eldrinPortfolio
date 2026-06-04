@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { LockClosedIcon } from "@heroicons/react/24/solid";
-import { MacbookScroll } from "../components/ui/macbook-scroll";
+
 
 export default function Projects() {
   const [todoLiveClicked, setTodoLiveClicked] = useState(false);
@@ -99,17 +99,7 @@ export default function Projects() {
         }
       `}</style>
 
-      {/* macbook scroll animation */}
-      <div className="relative z-0">
-        <MacbookScroll
-          src="/certificate.jpg"
-          title={
-            <span>
-              #thebestthingsnevercomeeasy<br></br>
-            </span>
-          }
-        />
-      </div>
+
       <div
         id="project"
         className="relative z-50 min-h-screen p-8 bg-grid text-gray-100 flex flex-col items-center justify-center space-y-16 font-sans overflow-x-hidden"
