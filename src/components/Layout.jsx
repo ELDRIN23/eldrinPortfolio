@@ -6,7 +6,7 @@ import GithubModal from "./CVModal";
 export default function Layout() {
   const location = useLocation();
 
-  const hideNavbar = location.pathname === "/business";
+  const hideNavbar = location.pathname === "/Business";
 
   return (
     <div
