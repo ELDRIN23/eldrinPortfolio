@@ -5,6 +5,7 @@ import Projects from "./Projects";
 import About from "./About";
 import Contact from "./Contact";
 import ContactForm from "./ConnectMe";
+import { FaReact } from "react-icons/fa";
 // import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
@@ -69,20 +70,24 @@ export default function Home() {
         <div className="fixed bottom-6 right-6 z-[99999] flex flex-col gap-3">
           <Link
             to="/Business"
-            className="bg-[#8b5cf6] text-white font-bold py-2.5 px-7 rounded-xl text-sm hover:bg-[#7c3aed] transition-colors shadow-lg text-center"
+            className="bg-black text-white font-bold py-2.5 px-7 rounded-xl text-sm hover:bg-zinc-800 transition-colors shadow-lg text-center border border-zinc-800"
           >
             View Business
           </Link>
 
           <a
             href="#ContactForm"
-            className="bg-white text-black font-bold py-2.5 px-5 rounded-xl text-sm hover:bg-gray-100 transition-colors shadow-lg text-center"
+            className="bg-white text-black font-bold py-2.5 px-5 rounded-xl text-sm hover:bg-zinc-100 transition-colors shadow-lg text-center border border-zinc-200"
           >
             Contact
           </a>
 
-          <div className="bg-white text-black font-bold py-2.5 px-5 rounded-xl text-sm text-center shadow-lg">
-            Made with ❤️
+          <div className="bg-white text-black font-bold py-2.5 px-5 rounded-xl text-sm text-center shadow-lg border border-zinc-200 flex items-center justify-center gap-2">
+            <span>build with</span>
+            <FaReact
+              className="w-5 h-5 text-sky-500 animate-spin"
+              style={{ animationDuration: "8s" }}
+            />
           </div>
         </div>
 
@@ -267,5 +272,3 @@ export default function Home() {
     </>
   );
 }
-
-
