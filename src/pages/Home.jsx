@@ -70,7 +70,7 @@ export default function Home() {
         <div className="fixed bottom-6 right-6 z-[99999] flex flex-col gap-3">
           <Link
             to="/Business"
-            className="bg-black text-white font-bold py-2.5 px-7 rounded-xl text-sm hover:bg-zinc-800 transition-colors shadow-lg text-center border border-zinc-800"
+            className="bg-purple-600 text-white font-bold py-2.5 px-7 rounded-xl text-sm hover:bg-purple-700 transition-colors shadow-lg text-center border border-purple-600"
           >
             View Business
           </Link>
@@ -90,7 +90,7 @@ export default function Home() {
             />
           </div>
         </div>
-
+        {/* //////////////////////////////////////////////////////////////////////////////////////////// */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 items-start">
           {/* LEFT PANEL */}
           <aside className="lg:sticky lg:top-16 w-full flex justify-center z-10">
