@@ -126,7 +126,7 @@ export default function Contact() {
 
   const statusColors = {
     "Super Active": "text-green-400",
-    Active: "text-purple-400",
+    Active: "text-[#c76422]",
     "Occasionally Active": "text-amber-400",
     Inactive: "text-gray-500",
   };
@@ -153,7 +153,7 @@ export default function Contact() {
           href="mailto:eldrinjohnson77@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-8 py-4 bg-purple-600 text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-lg transition-colors mb-4 hover:bg-purple-700"
+          className="inline-flex items-center gap-3 px-8 py-4 bg-[#c76422] text-white font-bold text-xs uppercase tracking-wider rounded-full shadow-lg transition-colors mb-4 hover:bg-[#b5571e]"
           whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(168, 85, 247, 0.4)" }}
           whileTap={{ scale: 0.98 }}
         >
@@ -170,7 +170,7 @@ export default function Contact() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Connect With <span className="text-purple-500">Me</span>
+            Connect With <span className="text-[#c76422]">Me</span>
           </motion.h1>
 
           {/* Subtext description message layer */}
@@ -204,7 +204,7 @@ export default function Contact() {
        
 
               <div className="flex items-center gap-4 mb-4">
-                <div className="p-3.5 rounded-2xl bg-[#18181b] border border-zinc-800 flex items-center justify-center text-purple-500 group-hover:text-white group-hover:bg-purple-600 transition-all duration-300">
+                <div className="p-3.5 rounded-2xl bg-[#18181b] border border-zinc-800 flex items-center justify-center text-[#c76422] group-hover:text-white group-hover:bg-[#c76422] transition-all duration-300">
                   <Icon size={24} />
                 </div>
                 <div className="flex flex-col">
@@ -225,7 +225,7 @@ export default function Contact() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2.5 bg-zinc-800 text-gray-200 hover:text-white hover:bg-purple-600 font-bold text-xs uppercase tracking-wider rounded-xl transition-all text-center"
+                className="px-4 py-2.5 bg-zinc-800 text-gray-200 hover:text-white hover:bg-[#c76422] font-bold text-xs uppercase tracking-wider rounded-xl transition-all text-center"
               >
                 View Profile
               </a>

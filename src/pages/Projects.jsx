@@ -113,7 +113,7 @@ export default function Projects() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            My <span className="text-purple-500">Projects</span>
+            My <span className="text-[#c76422]">Projects</span>
           </motion.h1>
         </div>
 
@@ -161,14 +161,14 @@ export default function Projects() {
                 {/* Secure Lock Layer overlay */}
                 {proj.locked && (
                   <div className="absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center z-30 rounded-3xl">
-                    <LockClosedIcon className="w-14 h-14 text-purple-500 animate-pulse" />
+                    <LockClosedIcon className="w-14 h-14 text-[#c76422] animate-pulse" />
                   </div>
                 )}
 
                 {/* Description Text Layer info block */}
                 <div className="p-6 flex flex-col flex-grow justify-between relative z-20">
                   <div>
-                    <h3 className="text-2xl font-bold text-purple-500 mb-2 tracking-wide">
+                    <h3 className="text-2xl font-bold text-[#c76422] mb-2 tracking-wide">
                       {proj.title}
                     </h3>
                     <p className="text-sm text-gray-400 leading-relaxed font-light">
@@ -184,7 +184,7 @@ export default function Projects() {
                           href={proj.live}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 text-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors duration-300 shadow-md"
+                          className="flex-1 text-center px-4 py-2 bg-[#c76422] hover:bg-[#b5571e] text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-colors duration-300 shadow-md"
                         >
                           View Live
                         </a>

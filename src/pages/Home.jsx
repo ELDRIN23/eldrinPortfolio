@@ -70,7 +70,7 @@ export default function Home() {
         <div className="fixed bottom-6 right-6 z-[99999] flex flex-col gap-3">
           <Link
             to="/Business"
-            className="bg-purple-600 text-white font-bold py-2.5 px-7 rounded-xl text-sm hover:bg-purple-700 transition-colors shadow-lg text-center border border-purple-600"
+            className="bg-[#c76422] text-white font-bold py-2.5 px-7 rounded-xl text-sm hover:bg-[#b5571e] transition-colors shadow-lg text-center border border-[#c76422]"
           >
             View Business
           </Link>
@@ -129,7 +129,7 @@ export default function Home() {
                   href="https://www.linkedin.com/in/eldrin-johnson"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#8b5cf6] transition-all duration-300 hover:scale-110"
+                  className="hover:text-[#c76422] transition-all duration-300 hover:scale-110"
                 >
                   <Linkedin size={20} />
                 </a>
@@ -138,7 +138,7 @@ export default function Home() {
                   href="https://www.instagram.com/_e_ldrin/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#8b5cf6] transition-all duration-300 hover:scale-110"
+                  className="hover:text-[#c76422] transition-all duration-300 hover:scale-110"
                 >
                   <Instagram size={20} />
                 </a>
@@ -147,7 +147,7 @@ export default function Home() {
                   href="https://github.com/ELDRIN23"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#8b5cf6] transition-all duration-300 hover:scale-110"
+                  className="hover:text-[#c76422] transition-all duration-300 hover:scale-110"
                 >
                   <Github size={20} />
                 </a>
@@ -156,7 +156,7 @@ export default function Home() {
                   href="https://www.facebook.com/share/1BnK8tbZ1t/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#8b5cf6] transition-all duration-300 hover:scale-110"
+                  className="hover:text-[#c76422] transition-all duration-300 hover:scale-110"
                 >
                   <Facebook size={20} />
                 </a>
@@ -164,7 +164,7 @@ export default function Home() {
 
               <motion.a
                 href="#ContactForm"
-                className="w-full text-center bg-gradient-to-r from-[#8b5cf6] to-[#7c3aed] hover:from-[#9065f7] hover:to-[#8247f0] text-white font-semibold py-3 px-6 rounded-xl border border-white/10 transition-all duration-300 text-sm mb-6 block tracking-wide"
+                className="w-full text-center bg-gradient-to-r from-[#c76422] to-[#b5571e] hover:from-[#d17031] hover:to-[#b5571e] text-white font-semibold py-3 px-6 rounded-xl border border-white/10 transition-all duration-300 text-sm mb-6 block tracking-wide"
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -180,7 +180,7 @@ export default function Home() {
               >
                 <p className="text-sm text-gray-300 leading-relaxed mb-4 text-center">
                   I'm a Certified Developer from
-                  <span className="text-purple-400 font-semibold">
+                  <span className="text-[#c76422] font-semibold">
                     {" "}
                     Illinois Institute of Technology, Chicago, USA
                   </span>
@@ -200,8 +200,8 @@ export default function Home() {
       py-3
       rounded-xl
       bg-gradient-to-r
-      from-[#8b5cf6]
-      to-[#7c3aed]
+      from-[#c76422]
+      to-[#b5571e]
       text-white
       font-semibold
       text-sm
@@ -225,7 +225,7 @@ export default function Home() {
                       key={skill}
                       className="text-[11px] font-medium px-2.5 py-1.5 bg-[#1a1a1f] border border-white/[0.04] text-gray-300 rounded-lg flex items-center gap-1.5"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#8b5cf6]" />{" "}
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#c76422]" />{" "}
                       {skill}
                     </span>
                   ))}
@@ -244,7 +244,7 @@ export default function Home() {
             >
               <h3 className="text-lg font-bold text-white tracking-wide mb-6">
                 Technical{" "}
-                <span className="text-purple-500">Expertise & Stack</span>
+                <span className="text-[#c76422]">Expertise & Stack</span>
               </h3>
               <div className="flex flex-wrap gap-2.5 justify-start">
                 {skills.map((skill) => (
@@ -256,7 +256,7 @@ export default function Home() {
                     }}
                     className="text-xs font-medium px-3.5 py-2 bg-[#1a1a1f] border border-white/[0.05] text-gray-300 rounded-xl flex items-center gap-2 transition-colors cursor-default"
                   >
-                    <span className="w-2 h-2 rounded-full bg-[#8b5cf6]" />{" "}
+                    <span className="w-2 h-2 rounded-full bg-[#c76422]" />{" "}
                     {skill}
                   </motion.span>
                 ))}

@@ -22,14 +22,14 @@ export default function Business() {
         "
       >
         <div className="mb-6">
-          <span className="inline-flex items-center px-4 py-2 rounded-full bg-purple-500/10 text-purple-400 text-sm font-semibold border border-purple-500/20">
+          <span className="inline-flex items-center px-4 py-2 rounded-full bg-[#c76422]/10 text-[#c76422] text-sm font-semibold border border-[#c76422]/20">
             Under Development
           </span>
         </div>
 
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
           Professional Business
-          <span className="block text-purple-500">
+          <span className="block text-[#c76422]">
             Solutions
           </span>
         </h1>
@@ -80,12 +80,12 @@ export default function Business() {
             inline-flex
             items-center
             justify-center
-            bg-purple-600
+            bg-[#c76422]
             text-white
             px-6
             py-3
             rounded-xl
-            hover:bg-purple-700
+            hover:bg-[#b5571e]
             transition-all
           "
         >

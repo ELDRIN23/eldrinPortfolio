@@ -60,7 +60,7 @@ export default function SplashScreen() {
 
         {/* Infinity loader */}
         <motion.span
-          className="loading loading-infinity loading-xl text-purple-500 mb-6"
+          className="loading loading-infinity loading-xl text-[#c76422] mb-6"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.8, 1, 0.8],
@@ -87,11 +87,11 @@ export default function SplashScreen() {
   <div className="flex flex-col items-center gap-4">
     <EncryptedText
       text="Eldrin Johnson"
-      className="text-6xl font-extrabold text-purple-500 drop-shadow-lg"
+      className="text-6xl font-extrabold text-[#c76422] drop-shadow-lg"
       revealDelayMs={70}
       flipDelayMs={20}
-      encryptedClassName="text-purple-400"
-      revealedClassName="text-purple-500"
+      encryptedClassName="text-[#c76422]"
+      revealedClassName="text-[#c76422]"
     />
 
     <EncryptedText

@@ -72,7 +72,7 @@ function ContactForm() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            Get In <span className="text-purple-500">Touch</span>
+            Get In <span className="text-[#c76422]">Touch</span>
           </motion.h2>
 
           <motion.p
@@ -108,11 +108,11 @@ function ContactForm() {
               <input
                 type="text"
                 name="name"
-                placeholder="Your Name"
+                placeholder="Enter your name"
                 value={form.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3.5 rounded-xl bg-[#18181b] text-white placeholder-gray-500 border border-zinc-700 
-                           focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:ring-opacity-20 outline-none transition-all font-light"
+                className="w-full px-4 py-3.5 rounded-xl bg-[#18181b] text-white placeholder-gray-400 border border-zinc-700 
+                           focus:border-[#c76422] focus:ring-2 focus:ring-[#c76422] focus:ring-opacity-20 outline-none transition-all font-light"
                 required
               />
             </motion.div>
@@ -121,11 +121,11 @@ function ContactForm() {
               <input
                 type="email"
                 name="email"
-                placeholder="Your Email"
+                placeholder="Enter your email address"
                 value={form.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3.5 rounded-xl bg-[#18181b] text-white placeholder-gray-500 border border-zinc-700 
-                           focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:ring-opacity-20 outline-none transition-all font-light"
+                className="w-full px-4 py-3.5 rounded-xl bg-[#18181b] text-white placeholder-gray-400 border border-zinc-700 
+                           focus:border-[#c76422] focus:ring-2 focus:ring-[#c76422] focus:ring-opacity-20 outline-none transition-all font-light"
                 required
               />
             </motion.div>
@@ -134,22 +134,22 @@ function ContactForm() {
               <input
                 type="text"
                 name="phone"
-                placeholder="Phone"
+                placeholder="Enter your phone number"
                 value={form.phone}
                 onChange={handleChange}
-                className="w-full px-4 py-3.5 rounded-xl bg-[#18181b] text-white placeholder-gray-500 border border-zinc-700 
-                           focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:ring-opacity-20 outline-none transition-all font-light"
+                className="w-full px-4 py-3.5 rounded-xl bg-[#18181b] text-white placeholder-gray-400 border border-zinc-700 
+                           focus:border-[#c76422] focus:ring-2 focus:ring-[#c76422] focus:ring-opacity-20 outline-none transition-all font-light"
               />
             </motion.div>
 
             <motion.div variants={inputVariants}>
               <textarea
                 name="message"
-                placeholder="Your Message"
+                placeholder="Tell me how I can help you"
                 value={form.message}
                 onChange={handleChange}
-                className="w-full px-4 py-3.5 rounded-xl bg-[#18181b] text-white placeholder-gray-500 border border-zinc-700 
-                           focus:border-purple-500 focus:ring-2 focus:ring-purple-500 focus:ring-opacity-20 outline-none resize-none h-36 transition-all font-light"
+                className="w-full px-4 py-3.5 rounded-xl bg-[#18181b] text-white placeholder-gray-400 border border-zinc-700 
+                           focus:border-[#c76422] focus:ring-2 focus:ring-[#c76422] focus:ring-opacity-20 outline-none resize-none h-36 transition-all font-light"
                 required
               />
             </motion.div>
@@ -159,7 +159,7 @@ function ContactForm() {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full px-6 py-3.5 font-bold text-xs uppercase tracking-wider rounded-xl bg-purple-600 text-white hover:bg-purple-700 transition-colors shadow-lg disabled:opacity-50"
+                className="w-full px-6 py-3.5 font-bold text-xs uppercase tracking-wider rounded-xl bg-[#c76422] text-white hover:bg-[#b5571e] transition-colors shadow-lg disabled:opacity-50"
               >
                 {status === "loading" ? "Sending..." : "Send Message"}
               </button>
@@ -169,7 +169,7 @@ function ContactForm() {
           {/* Response Messaging Hooks */}
           {status === "loading" && (
             <motion.p
-              className="text-purple-400 mt-5 font-medium text-center text-sm"
+              className="text-[#c76422] mt-5 font-medium text-center text-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >

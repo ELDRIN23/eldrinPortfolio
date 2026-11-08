@@ -138,7 +138,7 @@ export default function Navbar() {
                     duration-300
                     ${
                       isActive
-                        ? "bg-gradient-to-br from-[#a855f7] to-[#7c3aed] text-white shadow-[0_0_20px_rgba(168,85,247,0.45)]"
+                        ? "bg-gradient-to-br from-[#c76422] to-[#b5571e] text-white shadow-[0_0_20px_rgba(199,100,34,0.45)]"
                         : "text-gray-300 hover:text-white hover:bg-white/5"
                     }
                   `}

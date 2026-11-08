@@ -227,7 +227,7 @@ const tokenColors = {
   command: "text-emerald-400",
   flag: "text-sky-400",
   string: "text-amber-300",
-  number: "text-purple-400",
+  number: "text-[#c76422]",
   operator: "text-red-400",
   path: "text-cyan-300",
   variable: "text-pink-400",
